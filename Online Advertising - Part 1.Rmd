@@ -1,0 +1,41 @@
+---
+title: "Assignment ### Part 1"
+author: "Bradley Wallace"
+date: "12/07/2020"
+output: html_document
+---
+
+The sales are in thousands of units, while the advertising budgets (TV, Radio, Newspaper) are in thousands of dollars.
+```{r Q1 Part C, D & E}
+
+ad <- read.csv("F:/Documents/Advertising_Updated.csv")
+lm <- lm(Sales~., data=ad)
+summary(lm)
+new.dat <- data.frame(TV=200, Radio=10, Newspaper=20)
+predict(lm,newdata=new.dat,interval="prediction")
+
+```
+
+Week 12 Practice Question 6
+
+```{r Q6}
+
+library(queueing)
+i_mm1 <- NewInput.MM1(lambda=125.7,mu=127.05,n=100)
+# Build the model
+o_mm1 <-QueueingModel(i_mm1)
+Report(o_mm1)
+
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

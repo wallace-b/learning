@@ -1,0 +1,301 @@
+---
+title: "Assignment ### Part 2"
+author: "Bradley Wallace"
+date: "12/07/2020"
+output: html_document
+---
+
+**Question 1**
+
+*Q1.a*
+
+Ad_id with the least CPC that has the most impressions
+ad_id = 1121094
+
+*Q1.b*
+
+Campaign_id with highest CPM
+campaign_id = 936
+
+**Question 2**
+
+*Q2.a*
+
+Refer Code and Plot below
+
+*Q2.b*
+
+Gender 0 Median ROAS =	1.5910899			
+Gender 1 Median ROAS = 0.9215773
+
+Gender 0 Mean ROAS =	3.141986			
+Gender 1 Mean ROAS =	1.923027	
+
+```{r Question 1 to 2}
+
+#load packages
+suppressMessages(library(dplyr))
+suppressMessages(library(ggplot2))
+
+data_KAG <- read.csv("F:/Documents/KAG.csv", stringsAsFactors=FALSE)
+
+## Q1.A ##
+data_KAG %>%
+  select(ad_id, Impressions, CPC) %>% #select relevant columns
+  filter(CPC < 0.0001) %>% #from inspection there are a wide range of ads with 0 CPC
+  arrange(desc(Impressions)) #descending order, showing max Impressions at top
+
+## Q1.B ##  
+data_KAG %>%
+  select(campaign_id,Impressions,Spent) %>% #select relevant columns
+  group_by(campaign_id) %>% #group by campaign 
+  summarise(CPM = (sum(Spent)/(sum(Impressions)/1000))) # in 1000s of views
+
+## Q2 Data Preparation ##
+data_KAG_ROAS <- data_KAG %>%
+  filter(Spent>0) %>% #exclude costs = 0
+  mutate(ROAS = (10*Total_Conversion + 50*Approved_Conversion)/Spent)
+
+## Q2.A ##
+
+#organize data for plotting
+data_plot <- data_KAG_ROAS %>%
+  filter(interest == c(15,21,101)) %>%
+  group_by(gender)
+
+data_plot$interest <- as.factor(data_plot$interest)#convert interest_id to factor, so that box plots are plotted fore each interest_id  
+data_plot$gender <- as.factor(data_plot$gender) #convert gender to factor, so that two box plots are plotted for each interest_id
+
+plot_2a <- ggplot(data_plot, aes(x=interest, y=ROAS, fill=gender)) +
+  scale_y_log10() +
+  geom_boxplot() +
+  labs(title = "ROAS for 3 Interest IDs, by Gender") +
+  xlab("Interest ID") +
+  ylab("ROAS")
+  
+plot_2a #plot the plot created above
+
+## Q2.B ##
+data_KAG_ROAS %>%
+  filter(campaign_id == 1178) %>%
+  group_by(gender) %>%
+  summarise(median_ROAS = median(ROAS))
+
+data_KAG_ROAS %>%
+  filter(campaign_id == 1178) %>%
+  group_by(gender) %>%
+  summarise(mean_ROAS = mean(ROAS))
+```
+
+**Question 3**
+
+Refer Code and Scatterplot below
+
+For a new individual with an internet usage <= 150 and age = 40, from this plot and general trends visualized, I would estimate that this new individual is more likely to be in the 1 category i.e. yes, someone who clicks on the ad.
+
+That being, due to the encroachment of 0 category in this region of the plot, I would say there is still a chance this new individual could be a no (0), someone who does not click on the ad.
+
+A K-Nearest Neighbour or SVM method of classification would in most cases return the predicted category as a yes (1), someone who clicks on the ad.
+
+**Question 4**
+
+Refer Code and Plot of Confusion Matrix below
+
+**Question 5**
+
+Based on the confusion matrix, FN occurrences count is 87.
+
+Refer Code and ROC Plot below
+
+```{r Question 3 to 5}
+
+#load packages
+suppressMessages(library(pROC))
+suppressMessages(library(caret))
+
+#suppressMessages(library(dplyr)) already loaded
+#suppressMessages(library(ggplot2)) already loaded
+
+#load data  
+data_ad <- read.csv("F:/Documents/advertising.csv", stringsAsFactors=FALSE, header=TRUE)
+data_ad$Clicked.on.Ad <- as.factor(data_ad$Clicked.on.Ad) #convert to factor for plotting
+
+#inspect data
+head(data_ad)
+str(data_ad)
+
+## Q3 ##
+
+plot_3 <- ggplot(data_ad,aes(x=Age, y=Daily.Internet.Usage, shape=Clicked.on.Ad, color=Clicked.on.Ad)) +
+  geom_point()
+
+plot_3 #plot the plot created above
+
+# For a new individual with an internet usage <= 150 and age = 40, from this plot and general trends visualized, I would estimate that this new individual is more likely to be in the 1 category i.e. yes, someone who clicks on the ad.
+
+## Q4 ##
+
+#create logistic regression model on full data set and test on full data set as instructed.
+#this is not advisable due to introduction of bias, but has been done for simplicity's sake.
+
+logit_model <- glm(Clicked.on.Ad ~ Daily.Time.Spent.on.Site + Age + Area.Income, data=data_ad, family="binomial")
+data_ad_new <- data_ad %>%
+  mutate(pred_prob = predict(logit_model, newdata=data_ad, type="response")) %>%
+  mutate(pred_outcome = as.factor(ifelse(pred_prob > 0.8, 1, 0))) # using > 0.8 as the threshold value for Y=1 as instructed. 
+
+conf_matrix = confusionMatrix(data_ad_new$pred_outcome, data_ad_new$Clicked.on.Ad) #creat confusion matrix
+conf_matrix #print output
+
+#define draw_confusion_matrix function, from Week 10 TA session
+draw_confusion_matrix <- function(cm) {
+
+  layout(matrix(c(1,1,2)))
+  par(mar=c(2,2,2,2))
+  plot(c(100, 345), c(300, 450), type = "n", xlab="", ylab="", xaxt='n', yaxt='n')
+  title('CONFUSION MATRIX', cex.main=2)
+
+  # create the matrix 
+  rect(150, 430, 240, 370, col='#3F97D0')
+  text(195, 435, '0', cex=1.2)
+  rect(250, 430, 340, 370, col='#F7AD50')
+  text(295, 435, '1', cex=1.2)
+  text(125, 370, 'Predicted', cex=1.3, srt=90, font=2)
+  text(245, 450, 'Actual', cex=1.3, font=2)
+  rect(150, 305, 240, 365, col='#F7AD50')
+  rect(250, 305, 340, 365, col='#3F97D0')
+  text(140, 400, '0', cex=1.2, srt=90)
+  text(140, 335, '1', cex=1.2, srt=90)
+
+  # add in the cm results 
+  res <- as.numeric(cm$table)
+  text(195, 400, res[1], cex=1.6, font=2, col='white')
+  text(195, 335, res[2], cex=1.6, font=2, col='white')
+  text(295, 400, res[3], cex=1.6, font=2, col='white')
+  text(295, 335, res[4], cex=1.6, font=2, col='white')
+
+  # add in the specifics 
+  plot(c(100, 0), c(100, 0), type = "n", xlab="", ylab="", main = "DETAILS", xaxt='n', yaxt='n')
+  text(10, 85, names(cm$byClass[1]), cex=1.2, font=2)
+  text(10, 70, round(as.numeric(cm$byClass[1]), 3), cex=1.2)
+  text(30, 85, names(cm$byClass[2]), cex=1.2, font=2)
+  text(30, 70, round(as.numeric(cm$byClass[2]), 3), cex=1.2)
+  text(50, 85, names(cm$byClass[5]), cex=1.2, font=2)
+  text(50, 70, round(as.numeric(cm$byClass[5]), 3), cex=1.2)
+  text(70, 85, names(cm$byClass[6]), cex=1.2, font=2)
+  text(70, 70, round(as.numeric(cm$byClass[6]), 3), cex=1.2)
+  text(90, 85, names(cm$byClass[7]), cex=1.2, font=2)
+  text(90, 70, round(as.numeric(cm$byClass[7]), 3), cex=1.2)
+
+  # add in the accuracy information 
+  text(30, 35, names(cm$overall[1]), cex=1.5, font=2)
+  text(30, 20, round(as.numeric(cm$overall[1]), 3), cex=1.4)
+  text(70, 35, names(cm$overall[2]), cex=1.5, font=2)
+  text(70, 20, round(as.numeric(cm$overall[2]), 3), cex=1.4)
+}  
+
+draw_confusion_matrix(conf_matrix)
+
+## Q5 ##
+
+#based on the confusion matrix, FN count = 87
+
+roc_1 <- roc(as.integer(data_ad_new$pred_outcome), as.integer(data_ad_new$Clicked.on.Ad))
+summary(roc_1)
+plot(roc_1, legacy.axes=TRUE, print.auc=TRUE) 
+#legacy.axes logical to plot as 1 - Specificity (The False Positive Rate)
+
+```
+
+**Question 6**
+
+*Q6.a*
+
+Average wait time in queue: 7 minutes
+
+*Q6.b*
+
+Average number of customers waiting in queue with 6 servers: 2 people
+
+**Question 7**
+
+Refer Plot below
+
+**Question 8**
+
+*Q8.a*
+
+Based on the Plot, 8 servers are required to have the average customer wait time in queue drop below 3 minutes.
+
+*Q8.b*
+
+In general, the chart is descreasing and resembles exponential decay: with every additional server, the average 'wait in queue time' decreases further, but at a rate of diminishing retruns. The service rate increases linearly at 14 customers per hour on average, thereby increasing the queueing systems capacity to deal with the variability in inter-arrival times and service times. However, as stated, there are diminishing returns on reducing the average 'wait in queue' times of customers for each additional server.
+
+we know the arrival rate is 82 customers per hour and we have a minimum service rate with, 7 servers, of 98 customers per hour (7 x 14 customers per hour). The service rate increases linearly (although not shown explicitly on the plot) with each additional server and 
+Understandably, even with this margin, the utilization of the system is somewhat high at 83.7% with 7 servers. Therefore, we should expect some waiting in response to the variability in the inter-arrival times and the service times (different personnel work faster or slower depending on a multitude of factors). This is why the average wait time for 7 servers is a 3 minutes and non-zero.
+
+I would say a reasonably optimal selection of servers is approx. 11 to 14 servers. After this region, the benefit of adding another server is marginal. I would not recommend having more than 15 servers for the given arrival rate based on the plot.
+
+The average wait time will approach zero (0) as we add more and more servers, to infinity.
+
+The restaurant should consider the costs of servers vs. delay costs against profits to further optimize how many servers they should employ and what average wait time is reasonable for customers.
+
+
+```{r Question 7 to 8}
+
+#load package
+suppressMessages(library(queueing))
+
+#based on Question Description
+lambda = 62 #customers per hour
+mu = 70 #customers per hour
+
+## Q6.a ##
+rho = lambda/mu
+Ls = lambda/(mu-lambda)
+Lq = rho*Ls
+Ws = Ls/lambda
+Wq = Lq/lambda
+print(paste0("Average wait time in queue: ", round(Wq*60, digits=0), " minutes.")) #round to nearest integer
+
+## Q6.b ##
+mu_new = 84 #customers per hour with 6 servers
+rho_new = lambda/mu_new
+Ls_new = lambda/(mu_new-lambda)
+Lq_new = rho_new*Ls_new
+Ws_new = Ls_new/lambda
+Wq_new = Lq_new/lambda
+print(paste0("Average number of customers waiting in queue with 6 servers: ", round(Lq_new, digits=0), " person(s).")) #round to nearest integer
+
+## Q7 ##
+
+#create a dataframe from scratch
+number_of_servers <- c(7:20)
+arrival_rate <- rep(82, length(number_of_servers))
+data_queue <- data.frame(number_of_servers, arrival_rate)
+
+data_queue <- data_queue %>%
+  mutate(service_rate = 14*number_of_servers) %>%
+  mutate(utilization = arrival_rate/service_rate) %>%
+  mutate(L_service = arrival_rate/(service_rate - arrival_rate)) %>%
+  mutate(L_queue = L_service*utilization) %>%
+  mutate(W_service = 60*L_service/arrival_rate) %>% #in minutes
+  mutate(W_queue = 60*L_queue/arrival_rate) #in minutes
+
+plot(data_queue$number_of_servers, data_queue$W_queue,
+     main="Average Queue Time vs. Number of servers",
+     ylab="Ave Time in Queue (mins)",
+     xlab="Number of Servers",
+     type="b", #both points and a line
+     col="blue")
+
+## Q8.a ##
+
+#it appears that at least 8 servers are required for the ave. wait time to drop below 3 minutes
+#check answer with MM1 model
+input_mm1 <- NewInput.MM1(lambda=82,mu=14*8)
+output_mm1 <- QueueingModel(input_mm1)
+Report(output_mm1)
+print(paste0("Average wait time in queue for 8 servers: ", round(60*output_mm1$Wq, digits=1), " minutes."))
+
+
+```
