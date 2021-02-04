@@ -1,0 +1,321 @@
+---
+title: "AB Testing and Securities Analysis"
+author: "Bradley Wallace"
+date: "10/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Question 1 Part A and B ####
+
+*1.A) Now compute the difference estimator for treatment 1 and treatment 2 datasets that were created, in comparison with the control group?* 
+
+Beta, trt1 = -0.3710, not significant,
+
+Beta, trt2 = 0.4940,  significant at 99%,
+
+*1.B) From the PlantGrowth dataset what is the average crop weight of the control group, treatment 1 group, and treatment 2 group, comment on which group has the highest average?*  
+
+Mean Control = 5.032,
+Mean Treatment 1 = 4.661,
+Mean Treatment 2 = 5.526,
+
+Beta, trt1 = Mean Treatment 1 - Mean Control = -0.371,
+
+Beta, trt2 = Mean Treatment 2 - Mean Control =0.494,
+
+Same as Part A i.e. using averages results in the same difference estimators as using linear regression.
+
+
+```{r Q1 Part A & B}
+library(datasets) # load the library containing the dataset
+data1 <- PlantGrowth # load the dataset
+summary(data1) # summary of dataset
+head(data1) # first few rows of dataset
+
+### Data Preparation ###
+# split datasets as required - control + treatment group 1 and control + treatment group 2
+data_group_1 <- data1[c(which(data1$group=="ctrl"),which(data1$group=="trt1")),]
+data_group_2 <- data1[c(which(data1$group=="ctrl"),which(data1$group=="trt2")),]
+
+data_group_1_alt <- dplyr::filter(data1, group=="ctrl"|group=="trt1")
+data_group_2_alt <- dplyr::filter(data1, group=="ctrl"|group=="trt2")
+
+### Part A ###
+# estimate difference estimator using linea regression (lm)
+model1 <- lm(weight~group,data=data_group_1)
+model2 <- lm(weight~group,data=data_group_2)
+
+# print summary of linear regression models to see difference estimator
+summary(model1)
+summary(model2)
+
+### Part B ###
+# calculate average crop weight of control, treatment group 1 and treatment group 2
+mean_ctrl = mean(data1[which(data1$group=="ctrl"),1])
+mean_trt1 = mean(data1[which(data1$group=="trt1"),1])                 
+mean_trt2 = mean(data1[which(data1$group=="trt2"),1])
+
+# print averages (i.e. means) results
+print(mean_ctrl)
+print(mean_trt1)
+print(mean_trt2)
+
+### Part A Check, using Part B ###
+# calculate difference estimators using averages (alternative method) to check answer to Part A
+print(mean_trt1 - mean_ctrl)
+print(mean_trt2 - mean_ctrl)
+                 
+```
+
+#### Question 1 Part C, D and E ####
+
+*1.C) In the above problem, Classify the workers into four groups and assign the corresponding group with the group title (A, B, C, and D).*
+
+Refer Code below
+
+*1.D) To estimate the difference in the difference we need four averages for the above-categorized groups i.e., control group before change, control group after change, treatment group before change, and treatment group after the change. Compute the following:*
+
+*i)  Calculate the mean of the ‘fte’ variable for each of the four groups in R and print them*
+
+Group A Mean = 23.38 # Control before, t=0,
+
+Group B Mean = 20.43058 # Treated before, t=0,
+
+Group C Mean = 21.09667 # Control after, t=1,
+
+Group D Mean = 20.89725 # Treated after, t=1,
+
+*ii)   Using these averages estimate the value of the difference in difference*  
+
+DID, using averages = (mean_A - mean_B) - (mean_C - mean_A) = 2.75
+
+*1.E) Estimate the DID (Difference in Difference) using a regression model.*
+
+DID, using linear regression = b3 = d_nj coefficient = 2.750
+
+```{r Q1 Part C, D & E}
+
+data2 <- read.csv("F:/Documents/Min_Wage.csv")
+
+### Part C ###
+
+group_a <- data2[which(data2$d==0 & data2$State=="Philadelphia"),] # Control before, t=0
+group_b <- data2[which(data2$d==0 & data2$State=="New Jersey"),] # Treated before, t=0
+group_c <- data2[which(data2$d==1 & data2$State=="Philadelphia"),] # Control after, t=1
+group_d <- data2[which(data2$d==1 & data2$State=="New Jersey"),] # Treated after, t=1
+
+group_a_alt <- dplyr::filter(data2, d==0 & State=="Philadelphia")
+group_b_alt <- dplyr::filter(data2, d==0 & State=="New Jersey")
+group_a_alt <- dplyr::filter(data2, d==1 & State=="Philadelphia")
+group_d_alt <- dplyr::filter(data2, d==1 & State=="New Jersey")
+
+### Part D ###
+## Section i) ##
+
+group_a_mean <- mean(group_a$fte) # Control before, t=0
+group_b_mean <- mean(group_b$fte) # Treated before, t=0
+group_c_mean <- mean(group_c$fte) # Control after, t=1
+group_d_mean <- mean(group_d$fte) # Treated after, t=1
+
+print(group_a_mean)
+print(group_b_mean)
+print(group_c_mean)
+print(group_d_mean)
+
+## Section ii) ##
+DID = (group_d_mean - group_b_mean) - (group_c_mean - group_a_mean) # calculte Diff in Diff using averages
+
+print(DID)
+
+### Part E ###
+
+data2$nj = ifelse(data2$State=="New Jersey", 1, 0) # Create missing dummy variable for New_Jersey as "nj"
+model3 <- lm(fte ~ d + nj + d_nj,data=data2) # calculte Diff in Diff using linear regression with all necessary dummy variables
+summary(model3) # print linear regression summary
+# DID = b3 = d_nj coefficient = 2.750
+```
+
+#### Question 2 - Berkshire Hathaway Analysis ####
+
+*For Parts A, B, C, D, E, F, G, H, and I: using the dataset Berkshire.csvPreview the document with the following variables:* 
+
+Column (1): Date, Calendar Date
+Column (2): BRKret, Berkshire Hathaway’s monthly return
+Column (3): MKT, the return on the aggregate stock market
+Column (4): RF, the risk free rate of return
+
+*Round all answers to the nearest hundredth.* 
+
+*2.A) Find the standard deviation of Berkshire Hathaway over the sample period.* 
+
+Output: StdDev 0.06752971,
+
+6.75% per month
+
+Output: Annualized Standard Deviation 0.2339298,
+
+23.39% per year
+
+*2.B) Find Berkshire Hathaway’s average return over the sample period?*  
+
+Output: Mean 0.0189872,
+
+1.90% per month
+
+*2.C) By what percentage per month on average has Berkshire Hathaway outperformed the market?*
+
+Output: 0.0088286
+
+0.88% per month
+
+*2.D) $10,000 invested in Berkshire Hathaway at the start of the sample period would have grown to ____ by the end of the sample period.*
+
+Output: $41,439,896
+
+$10,000 multiplied by 4143.99, the cumulative return of Berkshire Hathaway from 1976 to 2018,
+
+1 dollar invested in Berkshire Hathaway in 1976 becomes an astonding 4143.99 dollars in 2018.
+
+*2.E) Plot the cumulative return of Berkshire and Market across all years and include a legend. Describe your observation. Combine the Plots.*
+
+Refer Plots and Code
+
+The cumulative return over the entire timeline is staggeringly higher for Berkshire Hathaway.
+96.22 - 1 dollar invested in a market index fund in 1976 (i.e. follows the overall market return) becomes 96.22 dollars in 2018.
+4143.99 - 1 dollar invested in Berkshire Hathaway in 1976 becomes an astonding 4143.99 dollars in 2018.
+
+The 1988-89 recession is hardly visible in Berkshire Hathaway's cumulative returns due to the magnitude of overall growth.
+
+The 2000s dotcom bubble recession is delayed for Berkshire Hathaway where the trough occurs in 2003. The overall trough for the market in this recession occurs in 2000.
+
+The 2007-08 financial crisis recession causes a trough for both the overall market and Berkshire Hathaway at the same time. Although the overall market drops to the same level trough as in the 2000 dotcom bubble recession, Berkshire Hathaway retains its growth strongly from the previous financial cycle, falling to a signficantly higher point than that of the 2003 trough resulting from the 2000 dotcome bubble recession.
+
+Relative performance shows Berkshire Hathaway's cumulative returns ranged from 40-50 times that of the aggregate stock market (excluding peaks) from 2002 to 2018. Berkshire Hathaway's cumulative returns grew to these levels from a 1:1 in 1976 to 2002 which implies to me that the outperformance of Berkshire Hathaway compared to the market had a staggering compounding effect. 
+
+*2.F) What is Berkshire Hathaway’s monthly Sharpe ratio?*
+
+Sharpe Ratio of Berkshire Hathaway = 0.23
+
+BrkRet                                 
+StdDev Sharpe (Rf=0.4%, p=95%): 0.2262115
+VaR Sharpe (Rf=0.4%, p=95%):    0.2060944
+ES Sharpe (Rf=0.4%, p=95%):     0.1728184
+
+*2.G) What is the Sharpe Ratio for the market index? Comparing this value to Berkshire Hathaway’s Sharpe ratio. Which one is higher and what does that mean?*
+
+Sharpe Ratio of Market = 0.15
+
+Berkshire Hathaway's Sharpe ratio is higher (0.23 vs. 0.15). A higher Sharpe ratio means that Berkshire Hathaway has a better risk-adjusted performance than the overall (aggregate) stock market e.g. an index market fund such as VTI or the S&P500.
+
+MKT
+StdDev Sharpe (Rf=0.4%, p=95%): 0.14794528
+VaR Sharpe (Rf=0.4%, p=95%):    0.09486128
+ES Sharpe (Rf=0.4%, p=95%):     0.05677763
+
+*2.H) What is Berkshire Hathaway’s estimated beta?*
+
+Output: 0.689755 *** significance,
+
+beta = MKT_Ex coefficient = 0.69
+
+*2.I) On a monthly basis, what is Jensen’s alpha for Berkshire Hathaway?*
+
+Output: 0.010829 *** significance,
+
+Jensen's alpha = intercept value = 1.08% per month or 108 basis points per month
+
+*Extra Commentary*
+Adjusted R^2 = 0.20, so the linear regression model only explains 20% of the variation between Berkshire Hathaway's Excess Return and the aggregate market Excess Return.
+Also, the F-statistic is significant, so there is a relationship between these two excess returns.
+
+
+```{r Q2}
+
+# load required dependencies
+library(PerformanceAnalytics)
+library(xts)
+library(lubridate)
+library(ggplot2)
+
+# load dataset and prepare dataset with excess returns for Berkshire Hathaway and the overall aggregate stock market
+data3 <- read.csv("F:/Documents/Berkshire.csv")
+data3$BrkRet_Ex <- data3$BrkRet - data3$RF
+data3$MKT_Ex <- data3$MKT - data3$RF
+
+data3$Date <- mdy(data3$Date) # convert dataset dates to "month-day-year" format
+fund <- data3[order(data3$Date),] # create new dataset called "fund" with ordered date-time
+
+All.dat <- xts(fund[,-1],order.by=fund[,1],) # convert dataset to time-series
+
+### Part A ###
+StdDev(All.dat$BrkRet) # use standard deviation function
+StdDev.annualized(All.dat$BrkRet) # use annualized standard deviation function
+
+### Part B ###
+mean(All.dat$BrkRet) # calculate average
+
+### Part C ###
+mean(All.dat$BrkRet) - mean(All.dat$MKT) # calculate average outperformance by using part B and subtracting average market return
+
+### Part D ###
+Q2D <- Return.cumulative(All.dat$BrkRet,geometric=TRUE) # calculate cumulative return of Berkshire Hathaway over full time period
+Q2D # check cumulative return
+Q2D*10000 #  calculate cumulative return of $10000 initially invested
+
+### Part E ###
+plot1 <- chart.CumReturns(All.dat$BrkRet,
+                 wealth.index = FALSE,
+                 geometric = TRUE,
+                 legend.loc = TRUE,
+                 colorset = 3,
+                 main="Growth of $1")
+plot2 <- chart.CumReturns(All.dat$MKT,
+                 wealth.index = FALSE,
+                 Geometric = TRUE,
+                 legend.loc = TRUE,
+                 colorset = 4,
+                 main="Growth of $1")
+plot1
+plot2
+plot3 <- chart.CumReturns(All.dat[,1:2],
+                 wealth.index = FALSE,
+                 Geometric = TRUE,
+                 legend.loc = TRUE,
+                 colorset = (3:4),
+                 main="Growth of $1")
+plot3
+
+chart.RelativePerformance(
+  All.dat$BrkRet,
+  All.dat$MKT,
+  main = "Relative Performance",
+  xaxis = TRUE,
+  colorset = (1:12),
+  legend.loc = "bottomright",
+  ylog = TRUE,
+  elementcolor = "darkgray",
+  lty = 1,
+  cex.legend = 0.7)
+
+
+Return.cumulative(All.dat$MKT,geometric=TRUE) # calculate cumulative return of aggregate market
+
+table.Stats(All.dat$BrkRet)
+table.Stats(All.dat$MKT)
+
+### Part F ###
+SharpeRatio(All.dat$BrkRet,All.dat$RF) # use Sharpe Ratio function calling Berkshire Hathaway return vs risk free rate
+
+### Part G ###
+SharpeRatio(All.dat$MKT,All.dat$RF) # use Sharpe Ratio function calling market return vs risk free rate
+
+### Part H & I ###
+alphabeta <- lm(BrkRet_Ex~MKT_Ex,data=All.dat) #
+summary(alphabeta)
+
+
+```
