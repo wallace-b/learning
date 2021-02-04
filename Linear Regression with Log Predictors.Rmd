@@ -1,0 +1,80 @@
+---
+title: "Linear Regression with Log Predictors"
+author: "Bradley Wallace"
+date: "08/06/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+QUESTION 1-8
+
+For Questions 1-4: Create a linear regression model (using the lm function) with Sales as the dependent variable and Price as the independent variable. 
+
+For Questions 5-8, create a linear regression model (using the lm function) with Sales as the dependent variable and Price, Bad_Shelf, and Good_Shelf as independent variables. 
+
+Create two indicator (dummy) variables:
+
+Bad_Shelf = 1 if ShelveLoc = “Bad”, 0 otherwise
+Good_Shelf = 1 if ShelveLoc = “Good”, 0 otherwise
+
+
+```{r carseats}
+library(dplyr)
+library(ISLR)
+data1 <- Carseats
+summary(data1)
+str(data1)
+
+lm1 <- lm(Sales ~ Price, data=data1)
+summary(lm1)
+
+data1 <- data1 %>%
+  mutate(Bad_Shelf = as.factor(ifelse(ShelveLoc=="Bad",1,0)))
+
+data1 <- data1 %>%
+  mutate(Good_Shelf = as.factor(ifelse(ShelveLoc=="Good",1,0)))
+
+str(data1)
+lm2 <- lm(Sales ~ Price + Bad_Shelf + Good_Shelf, data=data1)
+summary(lm2)
+
+```
+
+For questions 9-12, use the file PriceDemand.csv. Download it from here: https://www.dropbox.com/s/62jev2rnapxq6pw/PriceDemand.csv?dl=0 (Links to an external site.)
+
+Background information: A consumer packaged goods firm is studying the sales of its flagship        brand of laundry detergent, CleanPill. We have weekly data over a 50-week period on units sold and retail price (in dollars) in a dataset called PriceDemand. 
+
+Code to load the data set:  PriceDemand = read.csv("PriceDemand.csv", header = TRUE)
+
+Fit a linear regression model with Qty as the response variable and Price as the explanatory variable. 
+
+```{r pricedemand}
+data2 <- read.csv("F:/Documents/PriceDemand.csv") # load data set
+lm3 <- lm(Qty ~ Price, data=data2)
+summary(lm3)
+
+lm4 <- lm(Qty ~ log(Price), data=data2)
+summary(lm4)
+
+lm5 <- lm(log(Qty) ~ Price, data=data2)
+summary(lm5)
+
+lm6 <- lm(log(Qty) ~ log(Price), data=data2)
+summary(lm6)
+```
+
+```
+
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
