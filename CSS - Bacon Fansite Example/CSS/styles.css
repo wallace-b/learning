@@ -1,0 +1,22 @@
+body {
+  color: #0f1123;
+  background-color: #f9f7f7;
+}
+
+h1 {
+  color: red;
+  font-size: 100px;
+}
+
+/****** CLASS SELECTORS ******/
+.bacon{
+  background-color: green;
+  width: 120px;
+  height: 120px;
+}
+
+.broccoli{
+  background-color: red;
+  width: 120px;
+  height: 120px;
+}
