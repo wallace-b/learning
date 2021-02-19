@@ -8,6 +8,10 @@ h1 {
   font-size: 100px;
 }
 
+img:hover{
+  background-color: gold;
+}
+
 /****** CLASS SELECTORS ******/
 .bacon{
   background-color: green;
@@ -22,5 +26,15 @@ h1 {
 }
 
 .circular{
-  border-radius: 120px;
+  border-radius: 100%;
+}
+
+/****** ID SELECTORS ******/
+
+#heading{
+  color: blue;
+}
+
+#big{
+  font-size:200px;
 }
