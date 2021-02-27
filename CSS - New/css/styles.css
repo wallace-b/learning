@@ -1,24 +1,29 @@
 .top-container{
   background-color: #95E1D3;
-  padding: 10px;
-  margin: 10px;
+  height: 200px;
+  width: 200px;
+  padding: 20px;
+  border-style: solid;
+  border-width: 10px;
+  margin-left: 0px;
 }
 
 .middle-container{
   background-color: blue;
   height: 200px;
   width: 200px;
-  padding: 10px;
-  margin: 10px;
-
+  border-style: solid;
+  border-width: 20px;
+  margin-left: 260px;
 }
 
 .bottom-container{
   background-color: red;
   height: 200px;
   width: 200px;
-  padding: 10px;
-  margin: 10px;
+  border-style: solid;
+  border-width: 10px;
+  margin-left: 500px;
 }
 
 body{
