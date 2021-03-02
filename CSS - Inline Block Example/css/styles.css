@@ -1,0 +1,31 @@
+p{
+  background-color: red;
+  display: inline;
+}
+
+span{
+  background-color: blue;
+  display: block;
+  width: 150px;
+}
+
+.top{
+  background-color: gray;
+}
+
+.middle{
+  background-color: silver;
+}
+
+.new-p{
+  background-color: yellow;
+  display: inline-block;
+  width: 150px;
+}
+
+.hidden-p{
+  display: inline-block; /* display: none */
+  visibility: hidden;
+  width: 250px;
+
+}
