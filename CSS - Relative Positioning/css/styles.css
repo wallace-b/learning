@@ -1,0 +1,54 @@
+/* SOLUTION #1
+.red{
+  background-color: red;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  left: 400px;
+}
+
+.blue{
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  bottom: 200px;
+}
+
+.yellow{
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  bottom: 400px;
+  left: 200px;
+}
+*/
+
+/* SOLUTION #2 */
+.red{
+  background-color: red;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  left: 400px;
+}
+
+.blue{
+  background-color: blue;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  right: 200px;
+}
+
+.yellow{
+  background-color: yellow;
+  width: 200px;
+  height: 200px;
+  display: inline-block;
+  position: relative;
+  right: 205px;
+}
