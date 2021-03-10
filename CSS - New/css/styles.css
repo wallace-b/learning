@@ -1,5 +1,4 @@
 body {
-  background-color: #E4F9F5;
   margin: 0px;
   text-align: center;
   font-family: 'Merriweather', serif;
@@ -18,18 +17,14 @@ h3 {
 }
 
 .top-container {
+  background-color: #E4F9F5;
   position: relative;
-  margin-top: 100px;
-  margin-bottom: 30px;
+  padding-top: 75px;
 }
 
-.middle-container {
-  position: relative;
-}
+.middle-container {}
 
-.bottom-container {
-  position: relative;
-}
+.bottom-container {}
 
 .cloud-top {
   position: absolute;
@@ -39,6 +34,16 @@ h3 {
 .cloud-bottom {
   position: absolute;
   left: 30%;
+}
+
+.img-skill-1 {
+  height: 200px;
+  width: 200px:
+}
+
+.img-skill-2 {
+  height: 200px;
+  width: 200px:
 }
 
 .soft {
