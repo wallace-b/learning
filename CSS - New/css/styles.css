@@ -2,24 +2,35 @@ body {
   margin: 0px;
   text-align: center;
   font-family: 'Merriweather', serif;
+  font-size: 110%;
 }
 
 h1 {
+  font-size: 5.625rem;
+  margin: 50px auto 0 auto;
   font-family: 'Sacramento', cursive;
+  color: #66BFBF;
 }
 
 h2 {
+  font-size: 2.5rem;
   font-family: 'Montserrat', sans-serif;
+  color: #66BFBF;
 }
 
 h3 {
   font-family: 'Montserrat', sans-serif;
+  color: #11999E;
+}
+
+a {
+  color: #11999E;
 }
 
 .top-container {
   background-color: #E4F9F5;
   position: relative;
-  padding-top: 75px;
+  padding-top: 60px;
 }
 
 .middle-container {}
