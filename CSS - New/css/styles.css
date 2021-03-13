@@ -37,6 +37,17 @@ a {
 
 .bottom-container {}
 
+.skill-row {
+  width: 50%;
+  margin: 100px auto 100px auto;
+  text-align: left;
+  line-height: 2;
+}
+
+.soft {
+  text-decoration: underline;
+}
+
 .cloud-top {
   position: absolute;
   left: 60%;
@@ -48,15 +59,23 @@ a {
 }
 
 .img-skill-1 {
-  height: 200px;
-  width: 200px:
+  width: 25%;
+  float: left;
+  margin-right: 30px;
 }
 
 .img-skill-2 {
-  height: 200px;
-  width: 200px:
+  width: 25%;
+  float: right;
+  margin-left: 30px;
 }
 
-.soft {
-  text-decoration: underline;
+/* clear (anti-float, clearing the same clear of the associated img)
+.desc-skill-1{
+  clear: left;
 }
+
+.desc-skill-2{
+  clear: right;
+}
+*/
