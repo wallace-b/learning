@@ -3,6 +3,7 @@ body {
   text-align: center;
   font-family: 'Merriweather', serif;
   font-size: 110%;
+  color: #40514E;
 }
 
 h1 {
@@ -28,10 +29,11 @@ h3 {
 a {
   font-family: 'Montserrat', sans-serif;
   color: #11999E;
+  margin: 20px;
 }
 
 p {
-  color: #40514E;
+  line-height: 2;
 }
 
 hr {
@@ -45,26 +47,28 @@ hr {
 .top-container {
   background-color: #EAF6F6;
   position: relative;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 
-.middle-container {}
+.middle-container {
+}
 
 .bottom-container {
   background-color: #66BFBF;
-  padding: 60px 0 40px 0;
+  padding: 50px 0 20px 0;
 }
 
+
 .profile {
-  margin: 60px auto 60px auto;
+  margin: 50px auto;
 }
 
 .skills {
-  margin: 60px auto 60px auto;
+  margin: 50px auto;
 }
 
 .contact-me {
-  margin: 60px auto 60px auto;
+  margin: 50px auto;
 }
 
 .soft {
@@ -87,14 +91,13 @@ hr {
 
 .profile-text {
   width: 30%;
-  margin: 0 auto 0 auto;
+  margin: auto;
 }
 
 .skill-row {
   width: 50%;
-  margin: 40px auto 40px auto;
+  margin: 75px auto;
   text-align: left;
-  line-height: 2;
 }
 
 .img-skill-1 {
@@ -111,7 +114,7 @@ hr {
 
 .contact-me-text {
   width: 40%;
-  margin: 40px auto 40px auto;
+  margin: 40px auto 60px;
 }
 
 .contact-me-btn {
@@ -155,21 +158,10 @@ hr {
 }
 
 .footer-link {
-  margin: 25px;
   text-decoration: none;
 }
 
 .footer-sign-off {
-  margin: 40px auto 0 auto;
+  margin: 20px 0;
   color: #EAF6F6;
 }
-
-/* clear (anti-float, clearing the same clear of the associated img)
-.desc-skill-1{
-  clear: left;
-}
-
-.desc-skill-2{
-  clear: right;
-}
-*/
