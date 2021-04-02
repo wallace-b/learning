@@ -63,18 +63,24 @@ h1 {
 /* -- Features -- */
 
 #features{
-  margin: 8% 12% 8%;
+  padding: 7% 15%;
+}
+
+.feature-box{
   text-align: center;
+  padding: 5%;
 }
 
 .icon01{
   font-size: 3.5rem;
   color: #ef8172;
+  margin-bottom: 1rem;
 }
 
 .icon01:hover{
   font-size: 3.5rem;
   color: #ff4c68;
+  margin-bottom: 1rem;
 }
 
 h3{
@@ -82,7 +88,6 @@ h3{
   font-weight: bold;
   font-size: 1.5rem;
   color: #000;
-  padding-top: 2%;
 }
 
 p{
