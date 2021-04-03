@@ -2,11 +2,37 @@ body{
   font-family: "Montserrat", sans-serif;
 }
 
-.container-fluid {
-  padding: 3% 15%;
+h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 900;
+  font-size: 3.5rem;
+  line-height: 1.5;
+}
+
+h2 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+h3{
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+p{
+  font-size: 1.0rem;
+  color: #8f8f8f;
 }
 
 /* -- Navbar -- */
+
+.container-fluid {
+  padding: 3% 15%;
+}
 
 .navbar {
   padding: 0 0 4.5rem 0;
@@ -18,7 +44,7 @@ body{
   font-weight: bold;
 }
 
-.shiftright01 {
+.shift-right {
   margin-left: auto;
 }
 
@@ -33,13 +59,7 @@ body{
 }
 
 /* -- Intro Text -- */
-
-h1 {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 900;
-  font-size: 3.5rem;
-  line-height: 1.5;
-}
+/* just see h1 styling*/
 
 /* -- Download Buttons -- */
 
@@ -49,7 +69,7 @@ h1 {
 
 /* -- Title Image -- */
 
-.image01 {
+.title-image {
   width: 60%;
   transform: rotate(25deg);
   margin-left: 15%;
@@ -71,26 +91,42 @@ h1 {
   padding: 5%;
 }
 
-.icon01{
+.feature-icon{
   font-size: 3.5rem;
   color: #ef8172;
   margin-bottom: 1rem;
 }
 
-.icon01:hover{
+.feature-icon:hover{
   font-size: 3.5rem;
   color: #ff4c68;
   margin-bottom: 1rem;
 }
 
-h3{
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #000;
+/* -- Testimonials -- */
+
+#testimonials {
+  padding: 7% 15%;
+  text-align: center;
+  background-color: #ef8172;
+  color: #fff;
 }
 
-p{
-  font-size: 1.0rem;
-  color: #8f8f8f;
+.testimonial-image {
+  width: 10%;
+  border-radius: 100%;
+  margin: 20px;
+}
+
+/* -- Press -- */
+
+#press {
+  text-align: center;
+  background-color: #ef8172;
+  padding-bottom: 3%;
+}
+
+.press-logo {
+  width: 15%;
+  margin: 20px 20px 50px;
 }
