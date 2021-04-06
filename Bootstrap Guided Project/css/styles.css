@@ -28,9 +28,15 @@ p {
   color: #8f8f8f;
 }
 
+/* -- Title -- */
+#title {
+  background-color: #ff4c68;
+  color: #fff;
+}
+
 /* -- Navbar -- */
 .container-fluid {
-  padding: 3% 15%;
+  padding: 3% 15% 7%;
 }
 
 .navbar {
@@ -68,17 +74,17 @@ p {
 .title-image {
   width: 60%;
   transform: rotate(25deg);
-  margin-left: 15%;
-}
-
-#title {
-  background-color: #ff4c68;
-  color: #fff;
+  right: 30%;
+  position: absolute;
+  /* -- gains a z-index: 0 -- */
 }
 
 /* -- Features -- */
 #features {
   padding: 7% 15%;
+  background-color: #fff;
+  position: relative;
+  /* -- gains a z-index: 0, therefore the features section stacks on top of the title-image -- */
 }
 
 .feature-box {
@@ -128,7 +134,6 @@ p {
 }
 
 /* -- Pricing -- */
-
 #pricing {
   padding: 100px;
   text-align: center;
