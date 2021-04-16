@@ -1,192 +1,221 @@
-body {
-  font-family: "Montserrat", sans-serif;
-  text-align: center;
-}
+<!DOCTYPE html>
+<html>
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: "Montserrat", sans-serif;
-}
+<head>
+  <meta charset="utf-8">
+  <title>TinDog</title>
 
-p {
-  font-size: 1.0rem;
-  color: #8f8f8f;
-}
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Ubuntu&display=swap" rel="stylesheet">
 
-/* -- Containers --*/
+  <!-- CSS Stylesheets incl. Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/styles.css">
 
-.container-fluid {
-  padding: 7% 15%;
-}
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/069fa80ec2.js" crossorigin="anonymous"></script>
 
-/* -- Title -- */
-#title {
-  background-color: #ff4c68;
-  color: #fff;
-}
+</head>
 
-#title .container-fluid {
-  padding: 3% 15% 7%;
-}
+<body>
 
-/* -- Navbar -- */
-.navbar {
-  padding: 0 0 4.5rem 0;
-}
+  <section class="colored-section" id="title">
 
-.navbar-brand {
-  font-family: "Ubuntu", sans-serif;
-  font-size: 2.5rem;
-  font-weight: bold;
-}
+    <div class="container-fluid">
 
-.shift-right {
-  margin-left: auto;
-}
 
-.navbar-item {
-  padding: 0 25px;
-}
+      <!-- Nav Bar -->
 
-.nav-link {
-  font-family: "Montserrat", sans-serif;
-  font-weight: 300;
-  font-size: 1.2rem;
-}
+      <nav class="navbar navbar-expand-lg navbar-dark">
 
-/* -- Download Buttons -- */
-.download-button {
-  margin: 5% 3% 5% 0;
-}
+        <a class="navbar-brand" href="#"> tindog </a>
 
-/* -- Title Text -- */
-.title-text {
-  font-weight: 900;
-  font-size: 3.5rem;
-  line-height: 1.5;
-  text-align: left;
-}
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#myNavbar1">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-/* -- Title Image -- */
-.title-image {
-  width: 60%;
-  transform: rotate(25deg);
-  right: 30%;
-  position: absolute;
-  /* -- gains a z-index: 0 -- */
-}
+        <div class="collapse navbar-collapse" id="myNavbar1">
+          <ul class="navbar-nav shift-right">
+            <li class="nav-item">
+              <a href="#footer" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="#pricing" class="nav-link">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a href="#cta" class="nav-link">Download</a>
+            </li>
+          </ul>
+        </div>
 
-@media (max-width: 1028px) {
-  #title {
-    text-align: center;
-  }
+      </nav>
 
-  .title-image {
-    position: static;
-    transform: rotate(0);
-  }
-}
 
-/* -- Features -- */
-#features {
-  background-color: #fff;
-  position: relative;
-  /* -- gains a z-index: 0, therefore the features section stacks on top of the title-image -- */
-}
+      <!-- Title -->
 
-.feature-box {
-  padding: 5%;
-}
+      <div class="row">
+        <div class="col-lg-6">
+          <h1 class="title-text">Meet new and interesting dogs nearby.</h1>
+          <button type="button" class="btn btn-dark btn-lg download-button"><span class="fab fa-apple"></span> Download</button>
+          <button type="button" class="btn btn-outline-light btn-lg download-button"><span class="fab fa-google-play"></span> Download</button>
+        </div>
+        <div class="col-lg-6">
+          <img class="title-image" src="images/iphone6.png" alt="iphone-mockup">
+        </div>
+      </div>
+    </div>
+  </section>
 
-.feature-text {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #000;
-}
 
-.feature-icon {
-  font-size: 3.5rem;
-  color: #ef8172;
-  margin-bottom: 1rem;
-}
+  <!-- Features -->
 
-.feature-icon:hover {
-  font-size: 3.5rem;
-  color: #ff4c68;
-  margin-bottom: 1rem;
-}
+  <section class="white-section" id="features">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="feature-box col-lg-4">
+          <span class="feature-icon fas fa-check-circle"></span>
+          <h3 class="feature-text">Easy to use.</h3>
+          <p>So easy to use, even your dog could do it.</p>
+        </div>
+        <div class="feature-box col-lg-4">
+          <span class="feature-icon fas fa-bullseye"></span>
+          <h3 class="feature-text">Elite Clientele</h3>
+          <p>We have all the dogs, the greatest dogs.</p>
+        </div>
+        <div class="feature-box col-lg-4">
+          <span class="feature-icon fas fa-heart"></span>
+          <h3 class="feature-text">Guaranteed to work.</h3>
+          <p>Find the love of your dog's life or your money back.</p>
+        </div>
+      </div>
+    </div>
 
-/* -- Testimonials -- */
-#testimonials {
-  background-color: #ef8172;
-  color: #fff;
-}
+  </section>
 
-.testimonial-text {
-  font-weight: bold;
-  font-size: 3rem;
-  line-height: 1.5;
-}
+  <!-- Testimonials -->
 
-.testimonial-image {
-  width: 10%;
-  border-radius: 100%;
-  margin: 20px;
-}
+  <section class="colored-section" id="testimonials">
 
-/* -- Press -- */
-#press {
-  background-color: #ef8172;
-  padding-bottom: 3%;
-}
+    <div id="testimonial-carousel" class="carousel slide" data-bs-ride="false">
+      <div class="carousel-inner">
+        <div class="carousel-item active container-fluid">
+          <h2 class="testimonial-text">I no longer have to sniff other dogs for love. I've found the hottest Corgi on TinDog. Woof.</h2>
+          <img class="testimonial-image" src="images/dog-img.jpg" alt="dog-profile">
+          <em>Pebbles, New York</em>
+        </div>
+        <div class="carousel-item container-fluid">
+          <h2 class="testimonial-text">My dog used to be so lonely, but with TinDog's help, they've found the love of their life. I think.</h2>
+          <img class="testimonial-image" src="images/lady-img.jpg" alt="lady-profile">
+          <em>Beverly, Illinois</em>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#testimonial-carousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
 
-.press-logo {
-  width: 15%;
-  margin: 20px 20px 50px;
-}
+  </section>
 
-/* -- Pricing -- */
-#pricing {
-  padding: 100px;
-}
 
-.pricing-text {
-  font-weight: bold;
-  font-size: 3rem;
-  line-height: 1.5;
-}
+  <!-- Press -->
 
-.pricing-column {
-  padding: 3% 2%;
-}
+  <section class="colored-section" id="press">
+    <img class="press-logo" src="images/techcrunch.png" alt="tc-logo">
+    <img class="press-logo" src="images/tnw.png" alt="tnw-logo">
+    <img class="press-logo" src="images/bizinsider.png" alt="biz-insider-logo">
+    <img class="press-logo" src="images/mashable.png" alt="mashable-logo">
 
-.pricing-card-text {
-  font-weight: bold;
-  font-size: 1.5rem;
-  color: #000;
-}
+  </section>
 
-/* -- Call to Action --*/
-#cta {
-  background-color: #ff4c68;
-}
 
-.cta-text {
-  font-weight: bold;
-  font-size: 3.5rem;
-  line-height: 1.5;
-  color: #fff;
-  margin: 0 20% 0;
-}
+  <!-- Pricing -->
 
-.cta-button {
-  margin: 5% 2.5% 0;
-}
+  <section class="white-section" id="pricing">
 
-/* -- Footer -- */
-#footer {
-  background-color: #fff;
-}
+    <h2 class="pricing-text">A Plan for Every Dog's Needs</h2>
+    <p>Simple and affordable price plans for your and your dog.</p>
+    <div class="row">
+      <div class="pricing-column col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="pricing-card-text">Chihuahua</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="pricing-text">Free</h2>
+            <p>5 Matches Per Day</p>
+            <p>10 Messages Per Day</p>
+            <p>Unlimited App Usage</p>
+            <button type="button" class="w-100 btn btn-lg btn-block btn-outline-dark">Sign Up</button>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-column col-lg-4 col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="pricing-card-text">Labrador</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="pricing-text">$49 / mo</h2>
+            <p>Unlimited Matches</p>
+            <p>Unlimited Messages</p>
+            <p>Unlimited App Usage</p>
+            <button type="button" class="w-100 btn btn-lg btn-block btn-dark">Sign Up</button>
+          </div>
+        </div>
+      </div>
+      <div class="pricing-column col-lg-4">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="pricing-card-text">Mastiff</h3>
+          </div>
+          <div class="card-body">
+            <h2 class="pricing-text">$99 / mo</h2>
+            <p>Priority Listing</p>
+            <p>Unlimited Matches</p>
+            <p>Unlimited Messages</p>
+            <p>Unlimited App Usage</p>
+            <button type="button" class="w-100 btn btn-lg btn-block btn-dark">Sign Up</button>
+          </div>
+        </div>
+      </div>
 
-.footer-icon {
-  margin: 2% 1% 2% 0;
-}
+  </section>
+
+
+  <!-- Call to Action -->
+
+  <section class="colored-section" id="cta">
+    <div class="container-fluid">
+      <h3 class="cta-text">Find the True Love of Your Dog's Life Today.</h3>
+      <button type="button" class="btn btn-dark btn-lg cta-button"><span class="fab fa-apple"></span> Download</button>
+      <button type="button" class="btn btn-light btn-lg cta-button"><span class="fab fa-google-play"></span> Download</button>
+    </div>
+  </section>
+
+
+  <!-- Footer -->
+
+  <footer class="white-section" id="footer">
+    <div class="container-fluid">
+      <span class="fab fa-twitter footer-icon"></span>
+      <span class="fab fa-facebook-f footer-icon"></span>
+      <span class="fab fa-instagram footer-icon"></span>
+      <span class="fas fa-envelope footer-icon"></span>
+      <p>© Copyright 2021 TinDog</p>
+    </div>
+  </footer>
+
+
+  <!-- Bootstrap Scripts -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
