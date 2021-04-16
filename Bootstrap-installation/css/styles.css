@@ -1,3 +1,23 @@
 .footer{
   text-align: center;
 }
+
+h1#title-a {
+  color: green;
+}
+
+h1#title-b {
+  color: orange;
+}
+
+.container-fluid h1 {
+  color: blue
+}
+
+.container-fluid.section-a {
+  color: red;
+}
+
+h3 {
+  color: black;
+}
