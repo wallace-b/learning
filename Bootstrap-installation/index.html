@@ -133,12 +133,39 @@
     Sample Text
     </button>
   </div>
-  
+
   <!-- spinner for "loading" icon-->
   <div class="spinner-border" role="status">
     <span class="visually-hidden">Loading...</span>
   </div>
 
+  <!-- combining selectors -->
+
+  <div>
+    <h3>New Div</h3>
+    <h1>Hello World! **no classes used**</h1>
+  </div>
+
+  <div>
+    <h3>New Div</h3>
+    <h1 id="title-a">Hello World! **id=title-a used**</h1>
+  </div>
+
+  <div class="container-fluid">
+    <h3>New Div</h3>
+    <h1>Hello World!</h1>
+    <h1 id="title-b">Hello World!</h1>
+  </div>
+
+  <div class="container-fluid section-a">
+    <h3>New Div</h3>
+    </p>
+    <h1>Hello World!</h1>
+    <p>**notice that the above is blue because the .container-fluid h1 parent-child selector
+    is taking priority over .container-fluid.section-a {color: red;} combo selector**
+    </p>
+    <h2>Hello World!</h2>
+  </div>
 
   <!-- bootstrap JS script -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
