@@ -21,3 +21,17 @@ h1#title-b {
 h3 {
   color: black;
 }
+
+
+h4 {
+  color: red;
+  color: blue;
+}
+
+.sample-text {
+  color: purple;
+}
+
+#sample-id {
+  color: orange;
+}
