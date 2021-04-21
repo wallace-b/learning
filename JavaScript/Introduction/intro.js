@@ -7,3 +7,15 @@ var myName = "Bradley" /* Var declaration */
 var userName = prompt("What is your name?") /* Var declaration via prompt */
 alert("Hello!, my name is " + myName + ", it is nice to meet you " + userName + "!")
 /* ^ alert (print) a string using the variables of myName and the entered userName */
+
+/* Example of variable assignment */
+var a = 8;
+var b = 3;
+
+/* Problem: Flip the values */
+var c = a;
+a = b;
+b = c;
+
+/* Show solution */
+alert("a is: " + a + " and b is: " + b);
