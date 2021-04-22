@@ -19,3 +19,8 @@ b = c;
 
 /* Show solution */
 alert("a is: " + a + " and b is: " + b);
+
+/* Example - user-entered text length, string concatenation, var.length */
+var userText = prompt("Enter your message.");
+alert("You have written " + userText.length + " characters, you have " +
+(140 - userText.length) + " characters remaining." );
