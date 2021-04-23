@@ -33,3 +33,8 @@ alert(bread.slice(0,3))
 var name = "Bradley"
 var nameUpper = name.toUpperCase();
 var nameLower = name.toLowerCase();
+
+/* Example Problem of string conversion to correct case */
+var userName = prompt("What is your name?");
+userNameLength = userName.length;
+alert("Hello," + " " + userName.slice(0,1).toUpperCase() + userName.slice(1,userNameLength).toLowerCase())
