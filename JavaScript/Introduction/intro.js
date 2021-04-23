@@ -28,3 +28,8 @@ alert("You have written " + userText.length + " characters, you have " +
 /* Slicing Example */
 var bread = "bread"
 alert(bread.slice(0,3))
+
+/* String case conversion */
+var name = "Bradley"
+var nameUpper = name.toUpperCase();
+var nameLower = name.toLowerCase();
