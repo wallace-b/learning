@@ -24,3 +24,7 @@ alert("a is: " + a + " and b is: " + b);
 var userText = prompt("Enter your message.");
 alert("You have written " + userText.length + " characters, you have " +
 (140 - userText.length) + " characters remaining." );
+
+/* Slicing Example */
+var bread = "bread"
+alert(bread.slice(0,3))
