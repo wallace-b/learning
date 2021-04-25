@@ -38,3 +38,19 @@ var nameLower = name.toLowerCase();
 var userName = prompt("What is your name?");
 userNameLength = userName.length;
 alert("Hello," + " " + userName.slice(0,1).toUpperCase() + userName.slice(1,userNameLength).toLowerCase())
+
+/* Arithmetic Operations */
+var a = 2 + 3; // 5
+var b = 14 - 3; // 9
+var c = 6 * 3; // 18
+var d = 8 / 2; // 4
+var e = 15 % 4 // Modulo (remainder), 3
+
+/* BODMAS ordering of operations */
+var f1 = 2 + 5 * 2; // 12
+var f2 = (2 + 5) * 2; // 14
+
+/* Example Problem - Dog to Human years converter */
+var dogAge = prompt("What is your dog's age? (please enter a number)")
+var humanAge = ((dogAge - 2) * 4) + 21; // brackets help with ambiguity of order of operations
+alert("Your dog's age in human years is: " + humanAge);
