@@ -54,3 +54,18 @@ var f2 = (2 + 5) * 2; // 14
 var dogAge = prompt("What is your dog's age? (please enter a number)")
 var humanAge = ((dogAge - 2) * 4) + 21; // brackets help with ambiguity of order of operations
 alert("Your dog's age in human years is: " + humanAge);
+
+/* Increment and Decrement Expressions */
+var x = 2;
+x++; // ~ x = x + 1
+x--; // ~ x = x - 1
+
+var y = 4;
+x+=y; // ~ x = x + y
+x-=y; // ~ x = x - y
+x*=y; // ~ x = x * y
+x/=y; // ~ x = x / y
+
+var w = 55;
+var x = w++;
+x++; // x = 56, not 57 *x is assigned to w's value before it is incremented
