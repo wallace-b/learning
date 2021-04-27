@@ -95,3 +95,17 @@ function getMilk(money) {
 }
 
 getMilk(2);
+
+/* Age converter function */
+
+function lifeInWeeks(age) {
+
+  var years = 90 - age;
+  var zMonths = years*12;
+  var yWeeks = years*52;
+  var xDays = years*365;
+  console.log("You have " + xDays + " days, " + yWeeks + " weeks, and " + zMonths + " months left.")
+
+}
+
+lifeInWeeks(32);
