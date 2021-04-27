@@ -69,3 +69,29 @@ x/=y; // ~ x = x / y
 var w = 55;
 var x = w++;
 x++; // x = 56, not 57 *x is assigned to w's value before it is incremented
+
+/* Example: Function creation and usage, with internal variable */
+function getMilk(bottles) {
+    var cost = bottles * 1.5;
+  console.log("leaveHouse");
+  console.log("moveRight");
+  console.log("moveRight");
+  console.log("moveUp");
+  console.log("moveUp");
+  console.log("moveUp");
+  console.log("moveUp");
+  console.log("moveRight");
+  console.log("moveRight");
+  console.log("buy " + bottles + " bottles of milk - this cost $" + cost + ".");
+  console.log("moveLeft");
+  console.log("moveLeft");
+  console.log("moveDown");
+  console.log("moveDown");
+  console.log("moveDown");
+  console.log("moveDown");
+  console.log("moveLeft");
+  console.log("moveLeft");
+  console.log("enterHouse");
+}
+
+getMilk(2);
