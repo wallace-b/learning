@@ -70,9 +70,9 @@ var w = 55;
 var x = w++;
 x++; // x = 56, not 57 *x is assigned to w's value before it is incremented
 
-/* Example: Function creation and usage, with internal variable */
-function getMilk(bottles) {
-    var cost = bottles * 1.5;
+/* Example: Function creation and usage, with internal variable v2 */
+function getMilk(money) {
+    var bottles = Math.floor(money / 1.5);
   console.log("leaveHouse");
   console.log("moveRight");
   console.log("moveRight");
@@ -82,7 +82,7 @@ function getMilk(bottles) {
   console.log("moveUp");
   console.log("moveRight");
   console.log("moveRight");
-  console.log("buy " + bottles + " bottles of milk - this cost $" + cost + ".");
+  console.log("buy " + bottles + " bottle(s) of milk - you had $" + money + " and spent $" + bottles*1.5);
   console.log("moveLeft");
   console.log("moveLeft");
   console.log("moveDown");
