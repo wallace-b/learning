@@ -71,8 +71,8 @@ var x = w++;
 x++; // x = 56, not 57 *x is assigned to w's value before it is incremented
 
 /* Example: Function creation and usage, with internal variable v2 */
-function getMilk(money) {
-    var bottles = Math.floor(money / 1.5);
+function getMilk(money, costPerBottle) {
+
   console.log("leaveHouse");
   console.log("moveRight");
   console.log("moveRight");
@@ -82,7 +82,6 @@ function getMilk(money) {
   console.log("moveUp");
   console.log("moveRight");
   console.log("moveRight");
-  console.log("buy " + bottles + " bottle(s) of milk - you had $" + money + " and spent $" + bottles*1.5);
   console.log("moveLeft");
   console.log("moveLeft");
   console.log("moveDown");
@@ -92,9 +91,20 @@ function getMilk(money) {
   console.log("moveLeft");
   console.log("moveLeft");
   console.log("enterHouse");
+  return console.log("buy " + numberOfBottles(money, costPerBottle) + " bottle(s) of milk - you had $" + money + " and have change $" + changeAfter(money, costPerBottle));
 }
 
-getMilk(2);
+getMilk(5, 2);
+
+function numberOfBottles(money, costPerBottle) {
+      var bottles = Math.floor(money / costPerBottle);
+      return bottles;
+}
+
+function changeAfter(money, costPerBottle) {
+      var change = money % costPerBottle;
+      return change;
+}
 
 /* Age converter function */
 
