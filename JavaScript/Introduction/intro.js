@@ -128,3 +128,10 @@ function bmiCalculator(weight, height){
 }
 
 console.log(bmiCalculator(65, 1.8));
+
+/* Logical test examples */
+
+[] == 0;    // is true
+[] != 0;    // is false
+[] ===  0;  // is false, does not reconcile types
+[] !==  0;  // is true, does not reconcile types
