@@ -13,6 +13,20 @@ if (n > 90) {
   console.log("The probability of LOVE is :" + n + "%. Maybe try looking elsewhere...");
 } // If Else If Else example
 
+
+/* Love Calculator using Separate If statements Combining Comparators*/
+if (n > 90) {
+  console.log("The probability of LOVE is: " + n + "%. You could be SOULMATES!");
+}
+
+if (n > 65 && n <= 90) {
+  console.log("The probability of LOVE is: " + n + "%. It looks promising.");
+}
+
+if (n <= 65) {
+  console.log("The probability of LOVE is :" + n + "%. Maybe try looking elsewhere...");
+}
+
 /* Comparators and Equality == vs. === */
 var a = 1;
 var b = "1";
