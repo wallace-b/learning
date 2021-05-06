@@ -12,3 +12,19 @@ if (n > 90) {
 } else {
   console.log("The probability of LOVE is :" + n + "%. Maybe try looking elsewhere...");
 } // If Else If Else example
+
+/* Comparators and Equality == vs. === */
+var a = 1;
+var b = "1";
+typeof(a); // number
+typeof(b); // string
+if (a === b) {
+  console.log("a and b have the same type and value");
+} else {
+  console.log("no");
+}
+if (a == b) {
+  console.log("a and b have the same value but potentially different types");
+} else {
+  console.log("no");
+}
