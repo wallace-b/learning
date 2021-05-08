@@ -94,3 +94,14 @@ function isLeap1(year) {
 }
 
 isLeap1(2100);
+
+/* .includes() example */
+guestList = ["Brad", "Hyun", "Angela", "Felix", "Alan", "Joel", "Tiffany"];
+
+var guestName = prompt("What is your name?");
+
+if (guestList.includes(guestName)) {
+    alert("Please enter and have a good time!");
+} else {
+    alert("Who are you? Go away!");
+}
