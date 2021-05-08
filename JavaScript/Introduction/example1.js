@@ -61,7 +61,7 @@ alert(bmiCalculator(60, 2));
 
 /* Leap Year function */
 
-function isLeap(year) {
+function isLeap0(year) {
     if (year % 4 == 0 && year % 100 != 0) {
         console.log("Leap year.")
     } else if (year % 4 == 0 && year % 100 == 0 && year % 400 == 0) {
@@ -71,4 +71,26 @@ function isLeap(year) {
     }
 }
 
-isLeap(1948);
+isLeap0(1948);
+
+/* Leap Year function as nested If Else statements*/
+
+function isLeap1(year) {
+    if (year % 4 == 0) {
+        if (year % 100 == 0) {
+            if (year % 400 == 0) {
+              console.log("Leap year.")  
+            } else {
+              console.log("Not leap year.")
+            }
+            
+        } else {
+            console.log("Leap year.")
+        }
+    }
+    else {
+        console.log("Not leap year.")
+    }
+}
+
+isLeap1(2100);
