@@ -164,3 +164,15 @@ fizzBuzz();
 fizzBuzz();
 fizzBuzz();
 fizzBuzz();
+
+/* Function using pseudo-random number + scaling to select name randomly from names array
+Function returns string of 'who is going to buy lunch today'*/
+
+// guestList = ["Brad", "Hyun", "Angela", "Felix", "Alan", "Joel", "Tiffany"];
+
+function whosPaying(names) {
+    var index = Math.floor(Math.random()*(names.length));
+    return (names[index] + " is going to buy lunch today!");
+}
+
+whosPaying(guestList);
