@@ -106,7 +106,7 @@ if (guestList.includes(guestName)) {
     alert("Who are you? Go away!");
 }
 
-/* Fizz Buzz function JS */
+/* Fizz Buzz function JS - Nested If Else */
 function fizzBuzz(givenNumber) {
     if (givenNumber % 3 == 0) {
         if (givenNumber % 5 == 0) {
@@ -122,3 +122,45 @@ function fizzBuzz(givenNumber) {
 }
 
 fizzBuzz(20);
+
+/* Fizz Buzz function JS - Nested If Else, array.push and counter (needs loop added) */
+
+var output = [];
+var counter = 1;
+
+function fizzBuzz() {
+    if (counter % 3 == 0) {
+        if (counter % 5 == 0) {
+            output.push("FizzBuzz");
+        } else {
+            output.push("Fizz");
+        }
+    } else {
+        if (counter % 5 == 0) {
+            output.push("Buzz");
+        } else {
+            output.push(counter);
+        }
+
+    }
+
+    counter ++; //equiv to counter += 1
+
+    console.log(output);
+}
+
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
+fizzBuzz();
