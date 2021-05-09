@@ -79,11 +79,11 @@ function isLeap1(year) {
     if (year % 4 == 0) {
         if (year % 100 == 0) {
             if (year % 400 == 0) {
-              console.log("Leap year.")  
+              console.log("Leap year.")
             } else {
               console.log("Not leap year.")
             }
-            
+
         } else {
             console.log("Leap year.")
         }
@@ -105,3 +105,20 @@ if (guestList.includes(guestName)) {
 } else {
     alert("Who are you? Go away!");
 }
+
+/* Fizz Buzz function JS */
+function fizzBuzz(givenNumber) {
+    if (givenNumber % 3 == 0) {
+        if (givenNumber % 5 == 0) {
+            console.log("FizzBuzz");
+        } else {
+            console.log("Fizz");
+        }
+    } else {
+        if (givenNumber % 5 == 0) {
+            console.log("Buzz");
+        }
+    }
+}
+
+fizzBuzz(20);
