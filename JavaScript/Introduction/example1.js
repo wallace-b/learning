@@ -162,3 +162,33 @@ function whosPaying(names) {
 }
 
 whosPaying(guestList);
+
+/* 99 Bottles of Beer song */
+
+var counter = 1;
+var bottles = 99;
+
+function beerSong() {
+    while (counter <= 100) {
+      console.log(bottles, counter)
+      var a = bottles
+      bottles --;
+      counter ++; //equiv to counter += 1
+      var b = bottles
+
+      if (a > 2) {
+          console.log(a + " bottles of beer on the wall, " + a + " bottles of beer.");
+          console.log("Take one down, pass it around, " + b + " bottles of beer on the wall.");
+      } else if (a == 2) {
+          console.log(a + " bottles of beer on the wall, " + a + " bottles of beer.");
+          console.log("Take one down, pass it around, " + b + " bottle of beer on the wall.");      
+      } else if (a == 1) {
+          console.log(a + " bottle of beer on the wall, " + a + " bottle of beer.");
+          console.log("Take one down, pass it around, zero bottles of beer on the wall.");
+      } else {
+          console.log("Zero bottles of beer on the wall, zero bottles of beer.");
+      }
+    }
+}
+
+beerSong();
