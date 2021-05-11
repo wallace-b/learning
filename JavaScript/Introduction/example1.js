@@ -123,47 +123,33 @@ function fizzBuzz(givenNumber) {
 
 fizzBuzz(20);
 
-/* Fizz Buzz function JS - Nested If Else, array.push and counter (needs loop added) */
+/* Fizz Buzz function JS - Nested If Else, array.push and counter, plus while loop for specified number */
 
 var output = [];
 var counter = 1;
 
-function fizzBuzz() {
-    if (counter % 3 == 0) {
-        if (counter % 5 == 0) {
-            output.push("FizzBuzz");
-        } else {
-            output.push("Fizz");
-        }
-    } else {
-        if (counter % 5 == 0) {
-            output.push("Buzz");
-        } else {
-            output.push(counter);
-        }
-
+function fizzBuzz(numberOfRuns) {
+    while (counter <= numberOfRuns) {
+      if (counter % 3 == 0) {
+          if (counter % 5 == 0) {
+              output.push("FizzBuzz");
+          } else {
+              output.push("Fizz");
+          }
+      } else {
+          if (counter % 5 == 0) {
+              output.push("Buzz");
+          } else {
+              output.push(counter);
+          }
+      
+      }
+      counter ++; //equiv to counter += 1
     }
-
-    counter ++; //equiv to counter += 1
-
-    console.log(output);
 }
 
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
-fizzBuzz();
+fizzBuzz(55);
+console.log(output);
 
 /* Function using pseudo-random number + scaling to select name randomly from names array
 Function returns string of 'who is going to buy lunch today'*/
