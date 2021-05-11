@@ -192,3 +192,33 @@ function beerSong() {
 }
 
 beerSong();
+
+/* 99 Bottles of Beer song with two functions to avoid multiple If Else If statement for wording */
+
+var counter = 1;
+var bottles = 99;
+
+function beerWord(numberOfBottles) {
+    if (numberOfBottles > 1 || numberOfBottles == 0) {
+        var word = "bottles";
+    } else if (numberOfBottles == 1) {
+        var word = "bottle";
+    }
+    return word;
+}
+
+function beerSong() {
+    while (counter <= 100) {
+      console.log(bottles, counter)
+      var a = bottles
+      bottles --;
+      counter ++; //equiv to counter += 1
+      var b = bottles;
+      console.log(a + " " + beerWord(a) + " of beer on the wall, " + a + " " + beerWord(a) + " of beer.");
+      if (b >= 0) {
+            console.log("Take one down, pass it around, " + b + " " + beerWord(b) + " of beer on the wall.");
+      }
+    }
+}
+
+beerSong();
