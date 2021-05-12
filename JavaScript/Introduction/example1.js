@@ -142,10 +142,31 @@ function fizzBuzz(numberOfRuns) {
           } else {
               output.push(counter);
           }
-      
+
       }
       counter ++; //equiv to counter += 1
     }
+}
+
+fizzBuzz(55);
+console.log(output);
+
+/* Fizz Buzz function JS - If Else If, array.push and counter, plus For loop */
+
+var output = [];
+
+function fizzBuzz(numberOfRuns) {
+  for (var counter = 1; counter < numberOfRuns; counter++) {
+    if (counter % 3 == 0 && counter % 5 == 0) {
+      output.push("FizzBuzz");
+    } else if (counter % 3 == 0) {
+      output.push("Fizz");
+    } else if (counter % 5 == 0) {
+      output.push("Buzz");
+    } else {
+      output.push(counter);
+    }
+  }
 }
 
 fizzBuzz(55);
@@ -181,7 +202,7 @@ function beerSong() {
           console.log("Take one down, pass it around, " + b + " bottles of beer on the wall.");
       } else if (a == 2) {
           console.log(a + " bottles of beer on the wall, " + a + " bottles of beer.");
-          console.log("Take one down, pass it around, " + b + " bottle of beer on the wall.");      
+          console.log("Take one down, pass it around, " + b + " bottle of beer on the wall.");
       } else if (a == 1) {
           console.log(a + " bottle of beer on the wall, " + a + " bottle of beer.");
           console.log("Take one down, pass it around, zero bottles of beer on the wall.");
