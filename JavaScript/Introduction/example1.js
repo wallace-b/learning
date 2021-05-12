@@ -151,7 +151,7 @@ function fizzBuzz(numberOfRuns) {
 fizzBuzz(55);
 console.log(output);
 
-/* Fizz Buzz function JS - If Else If, array.push and counter, plus For loop */
+/* Fizz Buzz function JS - If Else If, array.push and counter, plus for loop */
 
 var output = [];
 
@@ -243,3 +243,22 @@ function beerSong() {
 }
 
 beerSong();
+
+/* Fibonacci Generator function using For Loop for stated 'n', also uses output.length for indexing */
+function fibonacciGenerator(n) {
+    var output = [];
+    for (var i = 1; i <= n; i++) {
+        if (i == 1) {
+            output.push(0);
+        } else if (i == 2) {
+            output.push(1);
+        } else {
+            var sumOfLastTwo = output[output.length - 2] + output[output.length - 1];
+            output.push(sumOfLastTwo);
+        }
+    }
+
+    return output;
+}
+
+fibonacciGenerator(15);
