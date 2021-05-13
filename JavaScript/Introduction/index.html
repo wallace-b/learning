@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>My Website</title>
+    <link rel="stylesheet" href="css\styles.css">
+  </head>
+  <body onload="alert('hello');"> <!-- inline javascript -->
+    <h1>Hello</h1>
+
+    <script type="text/javascript">
+
+      alert('hello');
+
+    </script> <!-- internal javascript -->
+
+    <script src="index.js" charset="utf-8"></script> <!-- external javascript -->
+
+  </body>
+</html>
+
+<!-- DOM = Document Object Model
+1. The index.js script, when called will attempt to replace the h1 element "Hello"
+    with "Good Bye"
+2. The js script call needs to be below where the h1 is located, because it will have
+    nothing to replace.
+3. Furthermore, the js script call needs to be below the stylesheet link, otherwise
+    the CSS styling will not be applied.
+4. Typically it is good practice to have css stylesheet linked in the head, and
+    js script calls towards the bottom of your code.
+-->
