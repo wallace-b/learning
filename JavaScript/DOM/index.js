@@ -12,3 +12,6 @@ heading.style.color = "orange"; // replaces the h1 with "new words..." in orange
 document.querySelector("ul").lastElementChild.innerHTML = "Bradley"; // replaces last element of <ul> with "Bradley"
 
 document.querySelector("input").click() // clicks the button
+
+document.querySelector("li a").style.color = "red"; // combination selector to change color of hyperlink to red
+document.getElementsByClassName("title")[0].style.color = "black"; // selecting title out of singular entry array
