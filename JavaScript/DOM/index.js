@@ -20,3 +20,4 @@ document.getElementsByClassName("title")[0].style.color = "black"; // selecting 
 document.querySelector("h2").style.visibility = "hidden";
 document.querySelector("h3").style.fontSize = "2.5rem";
 document.querySelector("button").style.backgroundColor = "yellow";
+document.querySelector("button").style.marginLeft = "20px";
