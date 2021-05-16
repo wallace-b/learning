@@ -15,3 +15,8 @@ document.querySelector("input").click() // clicks the button
 
 document.querySelector("li a").style.color = "red"; // combination selector to change color of hyperlink to red
 document.getElementsByClassName("title")[0].style.color = "black"; // selecting title out of singular entry array
+
+// use of other HTML DOM Style objects
+document.querySelector("h2").style.visibility = "hidden";
+document.querySelector("h3").style.fontSize = "2.5rem";
+document.querySelector("button").style.backgroundColor = "yellow";
