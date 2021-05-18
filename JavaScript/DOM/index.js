@@ -21,3 +21,5 @@ document.querySelector("h2").style.visibility = "hidden";
 document.querySelector("h3").style.fontSize = "2.5rem";
 document.querySelector("button").style.backgroundColor = "yellow";
 document.querySelector("button").style.marginLeft = "20px";
+
+document.querySelector("h1").classList.add("huge"); // adds 'huge' class to h1 element
