@@ -23,3 +23,8 @@ document.querySelector("button").style.backgroundColor = "yellow";
 document.querySelector("button").style.marginLeft = "20px";
 
 document.querySelector("h1").classList.add("huge"); // adds 'huge' class to h1 element
+
+// Text manipulation and textContent property
+document.querySelector("h4").innerHTML; // returns "<em>Change this!</em>"
+document.querySelector("h4").textContent; // returns "Change this!"
+document.querySelector("h4").innerHTML = "<strong>This was changed!</strong>" // changes the <h4> incl. </em> and string
