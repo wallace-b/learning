@@ -28,3 +28,8 @@ document.querySelector("h1").classList.add("huge"); // adds 'huge' class to h1 e
 document.querySelector("h4").innerHTML; // returns "<em>Change this!</em>"
 document.querySelector("h4").textContent; // returns "Change this!"
 document.querySelector("h4").innerHTML = "<strong>This was changed!</strong>" // changes the <h4> incl. </em> and string
+
+// Manipulating HTML elements
+document.querySelector("a").attributes;
+document.querySelector("a").getAttribute("href");
+document.querySelector("a").setAttribute("href","https://www.duckduckgo.com")
