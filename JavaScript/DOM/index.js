@@ -33,3 +33,10 @@ document.querySelector("h4").innerHTML = "<strong>This was changed!</strong>" //
 document.querySelector("a").attributes;
 document.querySelector("a").getAttribute("href");
 document.querySelector("a").setAttribute("href","https://www.duckduckgo.com")
+
+// querySelectorAll and for loop
+var nodeList = document.querySelectorAll("li");
+var i;
+for (i = 0; i < nodeList.length; i++) {
+  nodeList[i].style.color = "green";
+}
