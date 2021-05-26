@@ -14,6 +14,10 @@ function divide(num1, num2) {
   return num1 / num2;
 }
 
+function modulo(num1, num2) {
+  return num1 % num2;
+}
+
 function calculator(operator, num1, num2) {
   operator(num1, num2);
 }
