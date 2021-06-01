@@ -3,6 +3,11 @@
 document.addEventListener("keydown", function(event) {
   // switch statement, linking key down to corresponding sound
   makeSound(event.key);
+  // animate key press
+  buttonAnimation(event.key);
+
+
+
 });
 
 // Part 2 - button mouseclick assignment of sounds
@@ -15,7 +20,9 @@ for (i=0; i < buttonArray.length; i++) {
   buttonArray[i].addEventListener("click", function () {
 
     var buttonInnerHTML = this.innerHTML; // create expression for switch statement
-    makeSound(buttonInnerHTML);
+    makeSound(buttonInnerHTML); // play corresponding sound with switch statement
+    // animate mouse click on buttons
+    buttonAnimation(buttonInnerHTML);
 
   });
 };
@@ -63,4 +70,13 @@ function makeSound(key) {
     default: console.log(key);
 
   }
+}
+
+// function to play key animation - apply .pressed, then remove after 100ms
+function buttonAnimation(currentKey) {
+  var activeButton = document.querySelector("." + currentKey);
+  activeButton.classList.add("pressed");
+  setTimeout(function() {
+    activeButton.classList.remove("pressed");
+   }, 100);
 }
