@@ -5,3 +5,9 @@ body {
 h1 {
   color: red;
 }
+
+.big-title {
+  font-size: 10rem;
+  color: gold;
+  font-family: cursive;
+}
