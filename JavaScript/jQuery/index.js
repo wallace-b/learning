@@ -13,6 +13,12 @@ $(document).ready(function(){
 
 $("button").html("Don't Click Me!");
 
+$("a").attr("href", "https://www.bing.com"); // changing an attribute with JS
+
+setTimeout(function () {
+  alert($("h1").attr("class")); // get an alert containing the classes of the <h1> element on delay
+}, 500);
+
 // remove styling with setTimeout
 setTimeout(function () {
   $("h1").removeClass("big-title");
