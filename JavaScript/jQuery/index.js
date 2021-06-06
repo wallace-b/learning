@@ -50,3 +50,9 @@ $(document).keypress(function(event) {
 $("h1").mouseover(function(event) {
   $("h1").text("Hello world.");
 })
+
+// example of before, after, prepend, append
+$("h1").before("<p>Hi! (before)</p>");
+$("h1").after("<p>Hi! (after)</p>");
+$("h1").prepend("<p>Hi! (prepend)</p>");
+$("h1").append("<p>Hi! (append)</p>");
