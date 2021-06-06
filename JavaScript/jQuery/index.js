@@ -25,3 +25,28 @@ setTimeout(function () {
   $("h2").text("bye");
   $("button").html("Click Me")
 }, 1000);
+
+var buttonArray = document.querySelectorAll("button");
+
+//for (var i=0; i<buttonArray.length; i++) {
+//  buttonArray[i].addEventListener("click", function() {
+//    document.querySelector("h2").style.color = "blue";
+//  });
+//}
+
+// on click of <button> elements, apply callback function
+// example of how much smaller code can be using jQuery, compared to for loop
+$("button").click(function(){
+  $("h2").css("color", "blue");
+});
+
+// on keypress of any key on the page i.e. the whole document, apply callback function
+$(document).keypress(function(event) {
+  $("h1").text(event.key);
+  $("input").attr("value",event.key);
+})
+
+// on mouseover of <h1>, apply callback function
+$("h1").mouseover(function(event) {
+  $("h1").text("Hello world.");
+})
