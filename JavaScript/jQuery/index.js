@@ -56,3 +56,10 @@ $("h1").before("<p>Hi! (before)</p>");
 $("h1").after("<p>Hi! (after)</p>");
 $("h1").prepend("<p>Hi! (prepend)</p>");
 $("h1").append("<p>Hi! (append)</p>");
+
+// example of website animations
+$("button").on("click", function() {
+  //$("h3").fadeToggle(); // combination of fadeIn() and fadeOut() methods
+  //$("h3").slideToggle(); // combination of slideUp() and slideDown() methods
+  $("h3").slideUp().slideDown().animate({opacity: 0.40}); // method chaining and CSS change
+});
