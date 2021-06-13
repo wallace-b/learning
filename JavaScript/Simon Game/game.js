@@ -1,4 +1,5 @@
 var gamePattern = [];
+var userClickedPattern = [];
 
 var buttonColours = ["red", "blue", "green", "yellow"];
 
@@ -8,8 +9,11 @@ function nextSequence() {
   $("#" + randomChosenColour).fadeOut(100).fadeIn(100);
   var soundPlay = new Audio("sounds/" + randomChosenColour + ".mp3");
   soundPlay.play();
+  gamePattern.push(randomChosenColour);
 };
 
-$(document).on("click", function() {
-  nextSequence();
+// handler function
+$(".btn").on("click", function() {
+  userChosenColour = this.getAttribute("id");
+  userClickedPattern.push(userChosenColour);
 });
