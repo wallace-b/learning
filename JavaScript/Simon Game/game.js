@@ -37,6 +37,12 @@ $(".btn").on("click", function() {
   animatePress(userChosenColour);
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
+  if (checkAnswer(level-1) == 1) {
+    setTimeout(function () {
+      nextSequence();
+      userClickedPattern = [];
+    }, 1000);
+  };
 });
 
 function animatePress(currentColour) {
@@ -44,4 +50,10 @@ function animatePress(currentColour) {
   setTimeout(function () {
     $("#"+currentColour).removeClass("pressed")
   }, 100);
+};
+
+function checkAnswer(currentLevel) {
+  if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
+    return 1;
+  };
 };
