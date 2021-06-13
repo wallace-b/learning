@@ -25,6 +25,14 @@ $("h1").on("click", function() {
 // handler function
 $(".btn").on("click", function() {
   userChosenColour = this.getAttribute("id");
+  animatePress(userChosenColour);
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
 });
+
+function animatePress(currentColour) {
+  $("#"+currentColour).addClass("pressed");
+  setTimeout(function () {
+    $("#"+currentColour).removeClass("pressed")
+  }, 100);
+}
