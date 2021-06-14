@@ -6,6 +6,7 @@ var buttonColours = ["red", "blue", "green", "yellow"];
 // counters
 var initialCounter = 0;
 var level = 0;
+var userLevel = 0;
 
 // plays sound for corresponding colour selected
 function playSound(colourSelected) {
@@ -26,8 +27,9 @@ function nextSequence() {
 
 // test nextSequence function by clicking <h1> element
 $(document).on("keypress", function() {
-  if (initialCounter == 0) {nextSequence();
-  initialCounter++;
+  if (initialCounter == 0) {
+    nextSequence();
+    initialCounter++;
   }
 });
 
@@ -37,12 +39,24 @@ $(".btn").on("click", function() {
   animatePress(userChosenColour);
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
-  if (checkAnswer(level-1) == 1) {
-    setTimeout(function () {
-      nextSequence();
-      userClickedPattern = [];
-    }, 1000);
+  userLevel++;
+
+  console.log("uLevel = "+userLevel);
+  console.log("compLevel = "+level);
+  //checkAnswer(userLevel);
+
+  if (userLevel == level) {
+    console.log(gamePattern);
+    console.log(userClickedPattern);
+    if (checkAnswer(userLevel) == True) {
+        setTimeout(function () {
+        userLevel = 0;
+        nextSequence();
+        userClickedPattern = [];
+      }, 1000);
+    };
   };
+
 });
 
 function animatePress(currentColour) {
@@ -54,6 +68,10 @@ function animatePress(currentColour) {
 
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
-    return 1;
+    console.log("success");
+    return True;
+  } else {
+    console.log("wrong");
+    return False;
   };
 };
