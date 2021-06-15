@@ -1,12 +1,12 @@
-var gamePattern = [];
-var userClickedPattern = [];
+var gamePattern = []; // game pattern array determined randomly by computer
+var userClickedPattern = []; // user entered pattern array
 
 var buttonColours = ["red", "blue", "green", "yellow"];
 
 // counters
-var initialCounter = 0;
 var level = 0;
 var userLevel = 0;
+var initialCounter = 0;  // initialization counter
 
 // plays sound for corresponding colour selected
 function playSound(colourSelected) {
@@ -14,6 +14,15 @@ function playSound(colourSelected) {
     sound_.play();
 };
 
+// animate button press
+function animatePress(currentColour) {
+  $("#"+currentColour).addClass("pressed");
+  setTimeout(function () {
+    $("#"+currentColour).removeClass("pressed")
+  }, 100);
+};
+
+// function for game to trigger next sequence
 function nextSequence() {
   var randomNumber = Math.floor(Math.random()*4);
   var randomChosenColour = buttonColours[randomNumber];
@@ -23,7 +32,6 @@ function nextSequence() {
   $("#level-title").text("Level "+level);
   level++;
 };
-
 
 // test nextSequence function by clicking <h1> element
 $(document).on("keypress", function() {
@@ -35,20 +43,18 @@ $(document).on("keypress", function() {
 
 // handler function
 $(".btn").on("click", function() {
+  userLevel++;
   userChosenColour = this.getAttribute("id");
   animatePress(userChosenColour);
   userClickedPattern.push(userChosenColour);
   playSound(userChosenColour);
-  userLevel++;
 
-  console.log("uLevel = "+userLevel);
-  console.log("compLevel = "+level);
-  //checkAnswer(userLevel);
+  console.log("User Level = "+userLevel);
+  console.log("Level = "+level);
 
+  // next stage
   if (userLevel == level) {
-    console.log(gamePattern);
-    console.log(userClickedPattern);
-    if (checkAnswer(userLevel) == True) {
+    if (checkAnswer(userLevel-1) == "True") {
         setTimeout(function () {
         userLevel = 0;
         nextSequence();
@@ -57,21 +63,24 @@ $(".btn").on("click", function() {
     };
   };
 
+  // game restart
+  if (checkAnswer(userLevel-1) == "False") {
+    $("#level-title").text("Press A Key to Start");
+    gamePattern = [];
+    userClickedPattern = [];
+    level = 0;
+    userLevel = 0;
+    initialCounter = 0;
+
+  };
+
 });
 
-function animatePress(currentColour) {
-  $("#"+currentColour).addClass("pressed");
-  setTimeout(function () {
-    $("#"+currentColour).removeClass("pressed")
-  }, 100);
-};
-
+// function to compare array enrties between computer pattern and user entered pattern
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
-    console.log("success");
-    return True;
+    return "True";
   } else {
-    console.log("wrong");
-    return False;
+    return "False";
   };
 };
