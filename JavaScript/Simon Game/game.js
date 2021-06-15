@@ -33,6 +33,15 @@ function nextSequence() {
   level++;
 };
 
+// fucnction to restart game and variables
+function startOver () {
+  gamePattern = [];
+  userClickedPattern = [];
+  level = 0;
+  userLevel = 0;
+  initialCounter = 0;
+};
+
 // test nextSequence function by clicking <h1> element
 $(document).on("keypress", function() {
   if (initialCounter == 0) {
@@ -54,7 +63,7 @@ $(".btn").on("click", function() {
 
   // next stage
   if (userLevel == level) {
-    if (checkAnswer(userLevel-1) == "True") {
+    if (checkAnswer(userLevel-1) == true) {
         setTimeout(function () {
         userLevel = 0;
         nextSequence();
@@ -63,24 +72,23 @@ $(".btn").on("click", function() {
     };
   };
 
-  // game restart
-  if (checkAnswer(userLevel-1) == "False") {
-    $("#level-title").text("Press A Key to Start");
-    gamePattern = [];
-    userClickedPattern = [];
-    level = 0;
-    userLevel = 0;
-    initialCounter = 0;
-
+  // game over and game restart
+  if (checkAnswer(userLevel-1) == false) {
+    playSound("wrong");
+    $("body").addClass("game-over");
+    setTimeout(function () {
+      $("body").removeClass("game-over");
+    }, 400);
+    $("#level-title").text("Game Over, Press ANY Key to Start");
+    startOver();
   };
-
 });
 
 // function to compare array enrties between computer pattern and user entered pattern
 function checkAnswer(currentLevel) {
   if (gamePattern[currentLevel] == userClickedPattern[currentLevel]) {
-    return "True";
+    return true;
   } else {
-    return "False";
+    return false;
   };
 };
