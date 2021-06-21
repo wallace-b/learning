@@ -24,7 +24,7 @@ var spliceNew = array.splice(1,2); // == [2,3], array.splice([start], [length]),
 var concatNew = sliceNew.concat(spliceNew); // == [1,2,3,2,3], joins the two arrays together ~~
 
 var arrayTwo = [1, 2, 12, 15];
-arrayTwo.sort(); // == [1, 12, 15, 2], array.sort converts all elements to strings by default, so 2 > 12 and 15. This overwrites the original array
+arrayTwo.sort(); // == [1, 12, 15, 2], array.sort converts all elements to strings by default, so 2 > 12 and 15.
 
 // to avoid this, we need to supply a function as an arugument to array.sort();
 function compareNumeric(a, b) {
@@ -33,9 +33,18 @@ function compareNumeric(a, b) {
   if (a < b) return -1;
 }
 
-arrayTwo.sort(compareNumeric); // == [1, 2, 12, 15] this is now wokring as intended. This overwrites the original array
-arrayTwo.reverse(); // == [15, 12, 2, 1] no additional function pass is required for reverse() method. This overwrites the original array
+arrayTwo.sort(compareNumeric); // == [1, 2, 12, 15] this is now working as intended.
+arrayTwo.reverse(); // == [15, 12, 2, 1] no additional function pass is required for reverse() method. 
 
 // map - applying functions element-wise to an array
-arrayThree = [1, 2, 3, 4];
+var arrayThree = [1, 2, 3, 4];
 arrayThree.map(function(item) { return 2 * item }); // == [2, 4, 6, 8]
+
+// filter - by logical test - to an array
+var arrayFour = [45, 29, 41, 15, 2, 8];
+arrayFour = arrayFour.filter(function(item) { return item > 22 }); // == [45, 29, 41]. This overwrites the original array
+arrayFour = arrayFour.sort(compareNumeric); // == [45, 29, 41]. This overwrites the original array
+
+// join - comma delimited example
+vegetables = ["Carrot", "Potato", "Cabbage", "Brocolli", "Turnip", "Celery", "Parsnip"];
+var vegetablesString = vegetables.join(", "); // == comma delimited string
