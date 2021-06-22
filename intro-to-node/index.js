@@ -1,3 +1,8 @@
-const fs = require("fs");
+// $ npm install supervillains
+// $ node index.js
 
-fs.copyFileSync("file1.txt", "file2.txt");
+var supervillains = require("supervillains");
+
+var mySupervillainName = supervillains.random();
+
+console.log(mySupervillainName);
