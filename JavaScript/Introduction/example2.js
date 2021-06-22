@@ -20,8 +20,9 @@ var player2 = PlayerCreator("Jeff", 28, 20, ["Valorant", "PUBG", "Dota2"]);
 
 var array = [1, 2, 3, 4];
 var sliceNew = array.slice(0,3); // == [1,2,3], array.slice([start], [end]), zero-indexing, does not include end-index
-var spliceNew = array.splice(1,2); // == [2,3], array.splice([start], [length]), zero-indexing, selects n = [length] elements
+var spliceNew = array.splice(1,2); // == [2,3], array.splice([start], [length]), zero-indexing, selects n = [length] elements, makes array == [1,4] effectively removing [2,3]
 var concatNew = sliceNew.concat(spliceNew); // == [1,2,3,2,3], joins the two arrays together ~~
+var concatThree = sliceNew.concat(spliceNew, array); // this combines three arrays == [1,2,3,2,3,1,4]
 
 var arrayTwo = [1, 2, 12, 15];
 arrayTwo.sort(); // == [1, 12, 15, 2], array.sort converts all elements to strings by default, so 2 > 12 and 15.
@@ -46,5 +47,9 @@ arrayFour = arrayFour.filter(function(item) { return item > 22 }); // == [45, 29
 arrayFour = arrayFour.sort(compareNumeric); // == [45, 29, 41]. This overwrites the original array
 
 // join - comma delimited example
-vegetables = ["Carrot", "Potato", "Cabbage", "Brocolli", "Turnip", "Celery", "Parsnip"];
+var vegetables = ["Carrot", "Potato", "Cabbage", "Brocolli", "Turnip", "Celery", "Parsnip"];
 var vegetablesString = vegetables.join(", "); // == comma delimited string
+
+// forEach example
+var numbers = [1, 5, 7, 9, 11, 13, 14, 18, 21, 22, 25, 30];
+numbers = numbers.map(function(item, index) { return item*index });
