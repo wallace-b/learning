@@ -50,6 +50,14 @@ arrayFour = arrayFour.sort(compareNumeric); // == [45, 29, 41]. This overwrites 
 var vegetables = ["Carrot", "Potato", "Cabbage", "Brocolli", "Turnip", "Celery", "Parsnip"];
 var vegetablesString = vegetables.join(", "); // == comma delimited string
 
+// find index indexOf( )
+var position = vegetables.indexOf("Turnip");
+console.log("Turnip is found in position/index " + position); // == ... in position 4 (zero indexing)
+
 // forEach example
 var numbers = [1, 5, 7, 9, 11, 13, 14, 18, 21, 22, 25, 30];
 numbers = numbers.map(function(item, index) { return item*index });
+
+// example of constant (immutable) and Date function
+const d1 = new Date(); // current date
+const d2 = new Date(2021, 08, 02, 09, 30, 00, 00);  // == Mon Aug 02 2021 09:30:00:00, 7 values => new Date(year, month, day, hours, minutes, seconds, milliseconds)
