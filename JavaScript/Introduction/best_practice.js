@@ -13,4 +13,16 @@ period = 5 // in years
 
 endPrice = 100.5*((1+growthRate)**period);
 console.log(endPrice);
+
+// <-- Shorthand conditions -->
+// longhand
+if (x === 'Bradley' || x === 'Brad' || x === 'Wallace' || x === 'Wally') {
+  console.log("name match");
+};
+
+// shorthand
+if (['Bradley', 'Brad', 'Wallace', 'Wally'].includes(x)) {
+  console.log("name match");
+};
+  
                   
