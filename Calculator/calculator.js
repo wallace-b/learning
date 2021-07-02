@@ -1,8 +1,15 @@
-// require express
+// var declaration
+var result = '';
+
+// require express, body-parser
 const express = require('express');
+const bodyParser = require('body-parser');
 
 // setup express
 const app = express();
+
+// use body-parser in express
+app.use(bodyParser.urlencoded({extended: true}));
 
 // port selection
 const port = process.env.PORT || 3000;
@@ -14,7 +21,9 @@ app.get("/", function(req,res) {
 
 // post request
 app.post("/", function(req,res) {
-  res.send("Thanks for posting that!");
+  console.log(req.body);
+  result = Number(req.body.num1) + Number(req.body.num2);
+  res.send("Thanks for posting that! Addition of the two numbers is: " + result);
 });
 
 // start server on given port
