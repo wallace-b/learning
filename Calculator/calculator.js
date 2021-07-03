@@ -26,6 +26,18 @@ app.post("/", function(req,res) {
   res.send("Thanks for posting that! Addition of the two numbers is: " + result);
 });
 
+// get request #2
+app.get("/bmicalculator", function(req,res) {
+  res.sendFile(__dirname + '/bmiCalculator.html');
+});
+
+// post request #2
+app.post("/bmicalculator", function(req,res) {
+  console.log(req.body);
+  result = Number(req.body.weight)/(Number(req.body.height)**2);
+  res.send("Thanks, your BMI is: " + result);
+});
+
 // start server on given port
 app.listen(port, function() {
   console.log("Server is running on Port " + port);
