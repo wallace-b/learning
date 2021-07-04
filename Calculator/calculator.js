@@ -1,5 +1,7 @@
 // var declaration
 var result = '';
+var weight = '';
+var height = '';
 
 // require express, body-parser
 const express = require('express');
@@ -34,7 +36,9 @@ app.get("/bmicalculator", function(req,res) {
 // post request #2
 app.post("/bmicalculator", function(req,res) {
   console.log(req.body);
-  result = Number(req.body.weight)/(Number(req.body.height)**2);
+  weight = Number(req.body.weight); // kg
+  height = Number(req.body.height)/100; // cm [input] into m conversion
+  result = weight/(height**2); // kg/m^2
   res.send("Thanks, your BMI is: " + result);
 });
 
