@@ -2,6 +2,7 @@
 var result = '';
 var weight = '';
 var height = '';
+var operation = '';
 
 // require express, body-parser
 const express = require('express');
@@ -24,8 +25,18 @@ app.get("/", function(req,res) {
 // post request
 app.post("/", function(req,res) {
   console.log(req.body);
-  result = Number(req.body.num1) + Number(req.body.num2);
-  res.send("Thanks for posting that! Addition of the two numbers is: " + result);
+  operation = req.body.operator; // addition, subtraction, multiplication or division
+  // if, else if
+  if (operation === 'addition') {
+    result = Number(req.body.num1) + Number(req.body.num2);
+  } else if (operation === 'subtraction') {
+    result = Number(req.body.num1) - Number(req.body.num2);
+  } else if (operation === 'multiplication') {
+    result = Number(req.body.num1) * Number(req.body.num2);
+  } else if (operation === 'division') {
+    result = Number(req.body.num1) / Number(req.body.num2);
+  };
+  res.send("Thanks for posting that - " + operation + " of the two numbers is: " + result);
 });
 
 // get request #2
