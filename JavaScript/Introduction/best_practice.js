@@ -24,5 +24,11 @@ if (x === 'Bradley' || x === 'Brad' || x === 'Wallace' || x === 'Wally') {
 if (['Bradley', 'Brad', 'Wallace', 'Wally'].includes(x)) {
   console.log("name match");
 };
-  
+
+// Declare Arrays with const, to prevent accidental change of type
+var fruits = ["Apple", "Banana", "Orange"];
+fruits = 3; // Changes array to number
+
+const fruits = ["Apple", "Banana", "Orange"];
+fruits = 3; // not possible
                   
