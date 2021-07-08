@@ -66,3 +66,10 @@ const d2 = new Date(2021, 08, 02, 09, 30, 00, 00);  // == Mon Aug 02 2021 09:30:
 var stringOne = "Apple, Banana, Kiwi";
 stringOne.slice(7, 13)     // Returns Banana
 var stringTwo = stringOne.replace("Banana", "Pineapple Pen"); // == "Apple, Pineapple Pen, Kiwi"
+
+// passed by value and passed by reference difference
+var x = 234; // x is declared and assigned num value as 234; it holds a particular space in memory;
+var y = x; // y is declared as being equal to x at the current time and this is stored in a different space in memory;
+x = 21; // x is re-assigned num value as 21, but y-value remains the previous value because it was assigned the value x had in the memory at the time of assignment;
+console.log(y); // y = 234
+console.log(x); // x = 21
