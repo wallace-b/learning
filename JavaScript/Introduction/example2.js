@@ -63,6 +63,6 @@ const d1 = new Date(); // current date
 const d2 = new Date(2021, 08, 02, 09, 30, 00, 00);  // == Mon Aug 02 2021 09:30:00:00, 7 values => new Date(year, month, day, hours, minutes, seconds, milliseconds)
 
 // string methods
-let stringOne = "Apple, Banana, Kiwi";
+var stringOne = "Apple, Banana, Kiwi";
 stringOne.slice(7, 13)     // Returns Banana
-let stringTwo = stringOne.replace("Banana", "Pineapple Pen"); // == "Apple, Pineapple Pen, Kiwi"
+var stringTwo = stringOne.replace("Banana", "Pineapple Pen"); // == "Apple, Pineapple Pen, Kiwi"
