@@ -73,6 +73,11 @@ public class Main {
         boolean wasHumanBoolean = !isAlien ? true : false; // can be simplified to simply = !isAlien
         System.out.println(wasHumanInt);
         System.out.println(wasHumanBoolean);
+        
+        // another example using a String
+        int myScore = 50000;
+        String myString = (myScore >= 25000) ? "That's a very high score!" : "That's a low score!";
+        System.out.println(myString);
 
 
     }
