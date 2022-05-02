@@ -38,7 +38,8 @@ public class Main {
 
         // System.out.println(finalScore);
         // you cannot access a variable made within an if-else-then statement
-        // this is called 'scope'. A concept where the
+        // this is called 'scope'. A concept where the 'scope' of variables ...
+        // ... declared within an if-then statement can only be access within
 
         // exercise - accessing a variable, declaring a variable before the if-then statement
         int newScore = 10000;
