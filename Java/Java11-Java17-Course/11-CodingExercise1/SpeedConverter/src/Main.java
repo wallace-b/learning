@@ -1,5 +1,18 @@
 public class Main {
 
+    public static void main(String[] args) {
+        
+        double kilometersPerHour = 60.0;
+        printConversion(kilometersPerHour);
+
+        kilometersPerHour = 80.0;
+        printConversion(kilometersPerHour);
+
+        kilometersPerHour = 120.0;
+        printConversion(kilometersPerHour);
+
+    }
+
     public static long toMilesPerHour(double kilometersPerHour) {
         long result = -1;
         if (kilometersPerHour >= 0) {
