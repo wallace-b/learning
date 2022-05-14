@@ -1,3 +1,6 @@
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
+
 public class Main {
 
 
@@ -14,6 +17,10 @@ public class Main {
         System.out.println("------Exercise #4------");
         System.out.println(isLeapYear(10000));
         System.out.println(isLeapYear(1800));
+
+        System.out.println("------Exercise #5------");
+        System.out.println(areEqualByThreeDecimalPlaces(-3.175, -3.1756));
+
 
 
     }
@@ -54,5 +61,14 @@ public class Main {
         return false; // Step 5
     }
 
+    // Coding Exercise #5: Decimal Comparator, to three decimal places (no rounding)
+    public static boolean areEqualByThreeDecimalPlaces(double first, double second) {
+        DecimalFormat df = new DecimalFormat("0.###");
+        df.setRoundingMode(RoundingMode.DOWN);
+        double newFirst = Double.valueOf(df.format(first));
+        double newSecond = Double.valueOf(df.format(second));
+        if (newFirst == newSecond) { return true; } else { return false; }
+
+    }
 }
 
