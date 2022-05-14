@@ -34,6 +34,19 @@ public class Main {
         System.out.println(alpha + " + " + beta + " == " + sumAlphaBeta + " ?");
         System.out.println(hasEqualSum(alpha, beta, sumAlphaBeta));
 
+        System.out.println("------Exercise #7------");
+        int personOneAge = 16;
+        int personTwoAge = 11;
+        int personThreeAge = 22;
+        System.out.println("Ages: " + personOneAge + ", " + personTwoAge + ", " + personThreeAge + " has teen?");
+        System.out.println(hasTeen(personOneAge, personTwoAge, personThreeAge));
+
+        personOneAge = 25;
+        personTwoAge = 9;
+        personThreeAge = 31;
+        System.out.println("Ages: " + personOneAge + ", " + personTwoAge + ", " + personThreeAge + " has teen?");
+        System.out.println(hasTeen(personOneAge, personTwoAge, personThreeAge));
+
     }
 
     // Coding Exercise #2: KB to MB converter, integer MBs with residual KBs
@@ -82,10 +95,21 @@ public class Main {
 
     }
 
-    // Coding Exercise #6: Sum Checker (intOne + intTwo == intSum ?)
+    // Coding Exercise #6: Sum Checker (intOne + intTwo == intSum?)
     public static boolean hasEqualSum(int first, int second, int sum) {
         boolean result = (first + second) == sum;
         return result;
     }
+
+    // Coding Exercise #7: Is a number in the teens (13-19) in a set of 3 ints, calls another method
+    public static boolean hasTeen(int first, int second, int third) {
+        boolean result = (isTeen(first) || isTeen(second) || isTeen(third));
+        return result;
+    }
+    public static boolean isTeen(int value) {
+        boolean result = (value >= 13 && value <= 19);
+        return result;
+    }
+
 }
 
