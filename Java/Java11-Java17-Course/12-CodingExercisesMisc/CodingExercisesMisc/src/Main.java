@@ -21,7 +21,18 @@ public class Main {
         System.out.println("------Exercise #5------");
         System.out.println(areEqualByThreeDecimalPlaces(-3.175, -3.1756));
 
+        System.out.println("------Exercise #6------");
+        int alpha = 3;
+        int beta = -1;
+        int sumAlphaBeta = 2;
+        System.out.println(alpha + " + " + beta + " == " + sumAlphaBeta + " ?");
+        System.out.println(hasEqualSum(alpha, beta, sumAlphaBeta));
 
+        alpha = 2;
+        beta = 1;
+        sumAlphaBeta = 4;
+        System.out.println(alpha + " + " + beta + " == " + sumAlphaBeta + " ?");
+        System.out.println(hasEqualSum(alpha, beta, sumAlphaBeta));
 
     }
 
@@ -69,6 +80,12 @@ public class Main {
         double newSecond = Double.valueOf(df.format(second));
         if (newFirst == newSecond) { return true; } else { return false; }
 
+    }
+
+    // Coding Exercise #6: Sum Checker (intOne + intTwo == intSum ?)
+    public static boolean hasEqualSum(int first, int second, int sum) {
+        boolean result = (first + second) == sum;
+        return result;
     }
 }
 
