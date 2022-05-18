@@ -1,0 +1,4 @@
+Method overloading also allows us to pass different data types (as variables) into a Method of the same name.
+For example, we can pass many different data types into System.out.println( ).
+In fact there are 10 methods within println( ). 
+We even have string concatenation with Strings and other numerical data types! E.g. System.out.println("Yellow " + true + " hello " + 56)
