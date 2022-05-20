@@ -36,9 +36,9 @@ public class Main {
         int actualMinutes = (hours > 0) ? remainderMinutes : minutes;
 
         // leading zeros
-        String hoursStrings = (hours< 10) ? ("0" + hours) : ("" + hours);
-        String minutesStrings = (actualMinutes< 10) ? ("0" + actualMinutes) : ("" + actualMinutes);
-        String secondsStrings = (seconds< 10) ? ("0" + seconds) : ("" + seconds);
+        String hoursStrings = addLeadingZeros(hours); // add leading zeros, if needed
+        String minutesStrings = addLeadingZeros(actualMinutes); // add leading zeros, if needed
+        String secondsStrings = addLeadingZeros(seconds); // add leading zeros, if needed
         return (hoursStrings + "h " + minutesStrings + "m " + secondsStrings + "s");
     }
 
@@ -49,6 +49,11 @@ public class Main {
         int minutes = Math.round(seconds / 60);
         int remainderSeconds = seconds % 60;
         return getDurationString(minutes, remainderSeconds);
+    }
+
+    public static String addLeadingZeros(int value) {
+        String result = (value < 10) ? ("0" + value) : ("" + value);
+        return result;
     }
 
 }
