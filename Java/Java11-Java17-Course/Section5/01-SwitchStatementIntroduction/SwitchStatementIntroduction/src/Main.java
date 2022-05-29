@@ -18,7 +18,7 @@ public class Main {
         // the default functions as the else statement
         // the break statement is critical, otherwise the switch statement will continue to enter each case...
         // ...until it encounters a break statement (or the end of the switch statement) to exit the switch statement.
-        
+
         // Switch statements can use the four primitive data types - byte, short, char, int
 
         int switchValue = 3;
@@ -42,7 +42,20 @@ public class Main {
 
         }
 
-        System.out.println("Reached the end.");
+        // New Challenge, using a char switch statement
+
+        char charValue = 'A';
+        switch (charValue) {
+            case 'A': case 'B': case 'C': case 'D': case 'E':
+                System.out.println("Was A, B, C, D or E. The character was " + charValue);
+                break;
+
+            default:
+                System.out.println("A, B, C, D or E was not found");
+                break;
+        }
+
+        System.out.println("Reached the end");
 
     }
 }
