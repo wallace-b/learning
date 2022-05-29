@@ -18,6 +18,8 @@ public class Main {
         // the default functions as the else statement
         // the break statement is critical, otherwise the switch statement will continue to enter each case...
         // ...until it encounters a break statement (or the end of the switch statement) to exit the switch statement.
+        
+        // Switch statements can use the four primitive data types - byte, short, char, int
 
         int switchValue = 3;
         switch (switchValue) {
