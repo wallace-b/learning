@@ -1,11 +1,12 @@
 public class Main {
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         printDayOfTheWeek(0);
+        printDayOfTheWeekTwo(6);
     }
 
-    public static void printDayOfTheWeek(int day){
-        switch(day){
+    public static void printDayOfTheWeek(int day) {
+        switch (day) {
             case 0:
                 System.out.println("Sunday");
                 break;
@@ -38,8 +39,18 @@ public class Main {
                 System.out.println("Invalid day");
                 break;
         }
-
-
     }
+
+    public static void printDayOfTheWeekTwo(int day) {
+        String[] dayArray =
+                {"Sunday", "Monday", "Tuesday", "Wednesday",
+                        "Thursday", "Friday", "Saturday"};
+        if (day >= 0 && day <= 6) {
+            System.out.println(dayArray[day]);
+        } else {
+            System.out.println("Invalid day");
+        }
+    }
+
 
 }
