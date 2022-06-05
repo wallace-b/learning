@@ -12,7 +12,7 @@ public class Main {
         System.out.println("Initial Value: $" + currentValue);
         System.out.println("Interest Rate: " + interestRate + "%");
 
-        // for(init; termination; increment) { }
+        // for(init; termination; increment) { } i++ -> i = i+1 and i-- -> i = i-1
         for(int i=0; i<=9; i++) {
             double yearInterest = calculateInterest(currentValue, interestRate);
             System.out.println("Interest: $" + String.format("%.2f", yearInterest) + " after year " + (i+1));
@@ -22,10 +22,40 @@ public class Main {
 
         System.out.println("Total Gain: " + String.format("%.2f", ((currentValue/startingAmount)-1)*100) + "%");
 
+        // iterating backwards
+        System.out.println("===== countdown 10 to 0 ======");
+        for(int i=10; i>=0; i--) {
+            System.out.println(i);
+        }
+
+        // prime number finder
+        System.out.println("===== prime number finder ======");
+        int count = 0;
+        for(int i=0; i <= 400; i++) {
+            if (isPrime(i)) {
+                System.out.println(i);
+                count++;
+            }
+            if (count == 25) {
+                break;
+            }
+        }
     }
 
     public static double calculateInterest(double amount, double interestRate) {
         return (amount * (interestRate/100));
+    }
+
+    public static boolean isPrime(int n) {
+        if(n<=0 || n==1) {
+            return false;
+        }
+        for (int i=2; i<=n/2; i++) {
+            if (n % i == 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
