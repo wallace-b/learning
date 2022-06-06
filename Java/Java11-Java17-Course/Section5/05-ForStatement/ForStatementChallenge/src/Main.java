@@ -40,6 +40,13 @@ public class Main {
                 break;
             }
         }
+
+        // for loop with big iterations steps
+        System.out.println("===== foor loop with big iteration steps ======");
+        for(int number=100; number <= 600; number += 50) {
+            System.out.println(number);
+        }
+
     }
 
     public static double calculateInterest(double amount, double interestRate) {
