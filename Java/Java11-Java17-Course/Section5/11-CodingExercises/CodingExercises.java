@@ -1,7 +1,6 @@
-// Exercise 16 - First and Last Digit Sum
-
-public class FirstLastDigitSum {
+public class main{
     
+    // Exercise 16 - First and Last Digit Sum
     public static int sumFirstAndLastDigit(int number) {
         if (number < 0) {
             return -1;
@@ -16,11 +15,31 @@ public class FirstLastDigitSum {
             if (count == 0) {
                 lastDigit = number % 10;
             }
-            number = Math.round(number/10);
+            number /= 10;
         count++;
         }
     
         return firstDigit + lastDigit;
+        
+    }
+    
+    // Exercise 17 - Even Digit Sum 
+    public static int getEvenDigitSum(int number) {
+        if (number < 0) {
+            return -1;
+        }
+        
+        int sum = 0;
+        int step = 0;
+        while (number > 1) {
+            step = number % 10;
+            if (step > 1 && (step % 2) == 0) {
+                sum += step;
+            }
+            number /= 10;
+        }
+        
+        return sum;
         
     }
     
