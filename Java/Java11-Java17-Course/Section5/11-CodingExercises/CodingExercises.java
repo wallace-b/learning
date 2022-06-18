@@ -83,4 +83,28 @@ public class main{
         return false;
     }
     
+    // Exercise 20 - Greatest Common Divisor
+    public static int getGreatestCommonDivisor (int first, int second) {
+        if (first < 10 || second < 10) {
+            return -1;
+        }
+
+        int endStep = (first <= second ? first : second);
+        int step = 1;
+        int commonDenom = 1;
+        int firstRem = -1;
+        int secondRem = -1;
+
+        while (step <= endStep) {
+            firstRem = first % step;
+            secondRem = second % step;
+            if (firstRem == 0 && secondRem == 0) {
+                commonDenom = step;
+            }
+            step ++;
+        }
+        return commonDenom;
+    }
+
+    
 }
