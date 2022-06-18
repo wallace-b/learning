@@ -1,4 +1,4 @@
-public class main{
+public class Main {
 
     // Exercise 16 - First and Last Digit Sum
     public static int sumFirstAndLastDigit(int number) {
@@ -23,7 +23,7 @@ public class main{
 
     }
 
-    // Exercise 17 - Even Digit Sum 
+    // Exercise 17 - Even Digit Sum
     public static int getEvenDigitSum(int number) {
         if (number < 0) {
             return -1;
@@ -61,7 +61,7 @@ public class main{
 
         return false;
     }
-    
+
     // Exercise 19 - Last Digit Checker
     public static boolean isValid (int num) {
         if (num >= 10 && num <= 1000) {
@@ -74,15 +74,17 @@ public class main{
         if (!isValid(numOne) || !isValid(numTwo) || !isValid(numThree)) {
             return false;
         }
+
         int lastDigitOne = numOne % 10;
         int lastDigitTwo = numTwo % 10;
         int lastDigitThree = numThree % 10;
+
         if (lastDigitOne == lastDigitTwo || lastDigitOne == lastDigitThree || lastDigitTwo == lastDigitThree) {
             return true;
         }
         return false;
     }
-    
+
     // Exercise 20 - Greatest Common Divisor
     public static int getGreatestCommonDivisor (int first, int second) {
         if (first < 10 || second < 10) {
@@ -105,6 +107,21 @@ public class main{
         }
         return commonDenom;
     }
-
     
+        // Exercise 21 - Print All Factors (Remainder == 0 i.e. distinct Denominators)
+    public static void printFactors (int number) {
+        if (number < 1) {
+            System.out.println("Invalid Value");
+        }
+        int step = 1;
+        int rem = -1;
+        while (step <= number) {
+            rem = number % step;
+            if (rem == 0) {
+                System.out.println(step);
+            }
+            step++;
+        }
+    }
+
 }
