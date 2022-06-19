@@ -1,4 +1,13 @@
+import java.util.Arrays;
+
 public class Main {
+
+    // Print Statements / Testing
+
+    public static void main(String args[]){
+        isPerfectNumber(6);
+        printDigits(1200);
+    }
 
     // Exercise 16 - First and Last Digit Sum
     public static int sumFirstAndLastDigit(int number) {
@@ -107,8 +116,8 @@ public class Main {
         }
         return commonDenom;
     }
-    
-        // Exercise 21 - Print All Factors (Remainder == 0 i.e. distinct Denominators)
+
+    // Exercise 21 - Print All Factors
     public static void printFactors (int number) {
         if (number < 1) {
             System.out.println("Invalid Value");
@@ -124,4 +133,32 @@ public class Main {
         }
     }
 
+    // Exercise 22 - Perfect Number (sum of its proper positive divisors is the number itself)
+    public static boolean isPerfectNumber(int number) {
+
+        if (number < 1) {
+            return false;
+        }
+        
+        int step = 1;
+        int endStep = Math.round(number/2);
+        int denomSum = 0;
+        int rem = -9999;
+        
+        while (step <= endStep) {
+            rem = number % step;
+
+            if (rem == 0) {
+                System.out.println(step);
+                denomSum += step;
+            }
+            step++;
+        }
+        System.out.println(denomSum);
+        if (denomSum == number) {
+            return true;
+        }
+
+        return false;
+    }
 }
