@@ -139,12 +139,12 @@ public class Main {
         if (number < 1) {
             return false;
         }
-        
+
         int step = 1;
         int endStep = Math.round(number/2);
         int denomSum = 0;
         int rem = -9999;
-        
+
         while (step <= endStep) {
             rem = number % step;
 
@@ -152,13 +152,63 @@ public class Main {
                 System.out.println(step);
                 denomSum += step;
             }
+
             step++;
         }
+
         System.out.println(denomSum);
+
         if (denomSum == number) {
             return true;
         }
 
         return false;
+
     }
+
+    // Exercise 23 - Print Number Digits
+    public static void printDigits(int number) {
+        if (number < 0) {
+            System.out.println("Invalid Number");
+        }
+
+        if (number == 0) {
+            System.out.println("Zero");
+        }
+
+        int stepMax = digitCount(number);
+
+        String[] digitToWord = {"Zero", "One", "Two", "Three",
+                "Four", "Five", "Six", "Seven", "Eight", "Nine" };
+
+        // System.out.println("Steps/Digits: " + stepMax);
+
+        // Create a reversed String array
+        String[] result = new String[stepMax];
+        for (int i = stepMax - 1; i >= 0; i--) {
+        //for (int i = 0; i <= stepMax - 1; i++) {
+            result[i] = digitToWord[number % 10];
+            number /= 10;
+        }
+
+        // print using standard library array
+        System.out.println(Arrays.toString(result));
+
+        // for loop
+        String outcome = "";
+        for (String element: result) {
+            outcome += element + " ";
+        }
+        System.out.println(outcome);
+    }
+
+    public static int digitCount(int number) {
+        int count = 0;
+        while (number > 0) {
+            count++;
+            number /= 10;
+        }
+        return count;
+    }
+
 }
