@@ -33,6 +33,6 @@ public class Main {
 
         }
         System.out.print("SUM = " + sum + " AVG = " + average);
+        scanner.close();
     }
-    // Write your code here
 }
