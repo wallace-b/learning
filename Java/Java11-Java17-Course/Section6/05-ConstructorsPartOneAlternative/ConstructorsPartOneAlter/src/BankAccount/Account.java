@@ -12,19 +12,24 @@ public class Account {
         System.out.println("Empty constructor called");
     }
 
+    // Major constructor to handle all initialization //
     public Account(String number, double balance, String customerName, String customerEmailAddress,
                    String customerPhoneNumber) {
-        this.number = number;
+        this.number = number; // setNumber(number) could be used to call validity checks, but this could be problematic
         this.balance = balance;
         this.customerName = customerName;
         this.customerEmailAddress = customerEmailAddress;
         this.customerPhoneNumber = customerPhoneNumber;
+        // don't call setters and getters in a constructor, there could be initialization problems
     }
+    // ** Call major constructor for method overloading, as below
 
     public Account(String number, double balance, String customerName) {
-        this.number = number;
-        this.balance = balance;
-        this.customerName = customerName;
+        this(number, balance, customerName, "default", "default");
+    }
+
+    public Account(String customerName, String customerEmailAddress, String customerPhoneNumber) {
+        this("999999", 100.00, customerName, customerEmailAddress, customerPhoneNumber);
     }
 
     public void deposit(double depositAmount) {
