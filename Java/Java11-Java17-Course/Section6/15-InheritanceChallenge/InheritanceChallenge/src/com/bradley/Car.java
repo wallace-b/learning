@@ -11,8 +11,10 @@ public class Car extends Vehicle {
         this.wheels = wheels;
     }
 
-    public void brake(){
-        System.out.println(name + " is braking to stop! Sccrrrhhhhh~~");
+    @Override
+    public void stop(){
+        System.out.println(super.getName() + " is braking to stop! Sccrrrhhhhh~~");
+        setSpeed(0);
     }
 
 }
