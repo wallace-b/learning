@@ -6,16 +6,28 @@ public class Main {
 
     public static void main(String args[]){
         Vehicle boat = new Vehicle("Titanic", 4, 200, "rudder, wheel with hands");
-        boat.speed(15);
         boat.startEngine();
+        boat.setDirection(-735);
+        boat.setSpeed(2);
+        boat.increaseSpeed(15);
+        boat.adjustDirection(-375);
 
-        Car hyundai = new Car("Hyundai Sonato", 1, 5, 2, 4,"wheel with hands");
-        hyundai.speed(50);
+        System.out.println("");
+
+        Car hyundai = new Car("Hyundai Sonata", 1, 5, 2, 4,"wheel with hands");
         hyundai.startEngine();
-        hyundai.brake();
+        hyundai.setSpeed(50);
+        hyundai.increaseSpeed(25);
+        hyundai.stop();
 
-        Ferrari enzo = new Ferrari("Enzo", 1, 2, 2, 4, "wheel with hands");
-        enzo.speed(50);
+        System.out.println("");
+
+        Ferrari enzo = new Ferrari("Enzo", 1, 2, 2, 4,
+                "wheel with hands", true);
+        enzo.startEngine();
+        enzo.setSpeed(20);
+        enzo.increaseSpeed(25);
+        enzo.stop();
 
     }
 }
