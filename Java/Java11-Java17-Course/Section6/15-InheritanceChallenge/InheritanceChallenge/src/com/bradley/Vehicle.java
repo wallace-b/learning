@@ -3,20 +3,32 @@ package com.bradley;
 public class Vehicle {
     private String name;
     private int engines;
+
     private int speed;
+
     private int direction; // 0-359 degrees
     private int doors;
     private String steering;
+    private boolean isManual;
+    private int gear;
 
     public Vehicle(String name) {
-        this(name, 1, 1, "steering wheel with hands");
+        this(name, 1, 1, "steering wheel with hands", false);
+        // 1 engine, 1 door, hand steering wheel and automatic transmission by default
     }
 
-    public Vehicle(String name, int engines, int doors, String steering) {
+    public Vehicle(String name, int engines, int doors, String steering, boolean isManual) {
+        this(name, engines, 0, 0, doors, steering, isManual); // default 0 speed (stopped) and 0 direction (north)
+    }
+
+    public Vehicle(String name, int engines, int speed, int direction, int doors, String steering, boolean isManual) {
         this.name = name;
         this.engines = engines;
+        this.speed = speed;
+        this.direction = direction;
         this.doors = doors;
         this.steering = steering;
+        this.isManual = isManual;
     }
 
      public String getName(){
@@ -32,6 +44,14 @@ public class Vehicle {
         return speed;
     }
 
+    public void setGear(int gear){
+        this.gear = gear;
+        System.out.println(name + " is currently in " + this.gear + ".");
+    }
+
+    public int getGear(){
+        return gear;
+    }
     private int dir;
     public void setDirection(int direction){
 
