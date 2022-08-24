@@ -5,7 +5,7 @@ package com.bradley;
 public class Main {
 
     public static void main(String args[]){
-        Vehicle boat = new Vehicle("Titanic", 4, 200, "rudder, wheel with hands");
+        Vehicle boat = new Vehicle("Titanic", 4, 200, "rudder, wheel with hands", true);
         boat.startEngine();
         boat.setDirection(-735);
         boat.setSpeed(2);
@@ -14,7 +14,7 @@ public class Main {
 
         System.out.println("");
 
-        Car hyundai = new Car("Hyundai Sonata", 1, 5, 2, 4,"wheel with hands");
+        Car hyundai = new Car("Hyundai Sonata", 1, 5, 2, 4,"wheel with hands", false);
         hyundai.startEngine();
         hyundai.setSpeed(50);
         hyundai.increaseSpeed(25);
