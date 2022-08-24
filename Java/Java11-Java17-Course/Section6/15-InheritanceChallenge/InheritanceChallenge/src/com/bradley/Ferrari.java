@@ -4,7 +4,7 @@ public class Ferrari extends Car{
 
     private boolean spoiler;
     public Ferrari(String name, int engines, int doors, int axles, int wheels, String steering, boolean spoiler) {
-        super(name, engines, doors, axles, wheels, steering);
+        super(name, engines, doors, axles, wheels, steering, true);
         this.spoiler = spoiler;
     }
 
