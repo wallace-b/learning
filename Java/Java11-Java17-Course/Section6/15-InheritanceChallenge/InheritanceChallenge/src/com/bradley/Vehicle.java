@@ -37,7 +37,31 @@ public class Vehicle {
 
     public void setSpeed(int speed){
         this.speed = speed;
+        if (this.speed < 0) {
+            this.speed = 0;
+        }
         System.out.println(name + " is travelling at " + this.speed + " km/h.");
+        if (isManual) {
+            if (this.speed > 0 && this.speed <= 15) {
+                setGear(1);
+                // no resetting gear to Gear 1 if completely stopped.
+            }
+            if (this.speed > 15 && this.speed <= 25) {
+                setGear(2);
+            }
+            if (this.speed > 25 && this.speed <= 35) {
+                setGear(3);
+            }
+            if (this.speed > 35 && this.speed <= 50) {
+                setGear(4);
+            }
+            if (this.speed > 50 && this.speed <= 65) {
+                setGear(5);
+            }
+            if (this.speed > 65) {
+                setGear(6);
+            }
+        }
     }
 
     public int getSpeed(){
@@ -46,7 +70,7 @@ public class Vehicle {
 
     public void setGear(int gear){
         this.gear = gear;
-        System.out.println(name + " is currently in " + this.gear + ".");
+        System.out.println(name + " is currently in Gear " + this.gear + ".");
     }
 
     public int getGear(){
@@ -78,13 +102,47 @@ public class Vehicle {
         System.out.println(name + " is travelling facing " + this.direction + " degrees.");
     }
 
+    public int prevGear;
     public void increaseSpeed(int speed){
         this.speed += speed;
+        if (this.speed < 0) {
+            this.speed = 0;
+        }
         System.out.println(name + " is travelling at " + this.speed + " km/h.");
+        if (isManual) {
+            prevGear = getGear();
+            if (this.speed >= 0 && this.speed <= 15 && prevGear != 1) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 1.");
+                setGear(1);
+            }
+            if (this.speed > 15 && this.speed <= 25 && prevGear != 2) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 2.");
+                setGear(2);
+            }
+            if (this.speed > 25 && this.speed <= 35 && prevGear != 3) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 3.");
+                setGear(3);
+            }
+            if (this.speed > 35 && this.speed <= 50 && prevGear != 4) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 4.");
+                setGear(4);
+            }
+            if (this.speed > 50 && this.speed <= 65 && prevGear != 5) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 5.");
+                setGear(5);
+            }
+            if (this.speed > 65 && prevGear != 6) {
+                System.out.println("Vehicle changed from Gear " + prevGear + " to Gear 6.");
+                setGear(6);
+            }
+        }
     }
 
     public void startEngine(){
         System.out.println("Starting " + name + "'s " + engines + " engine(s)!!");
+        if (isManual) {
+            setGear(1);
+        }
     }
 
     public void stop(){
