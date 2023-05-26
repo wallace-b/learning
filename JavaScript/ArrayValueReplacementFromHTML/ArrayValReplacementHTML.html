@@ -1,0 +1,17 @@
+<html>
+    <body>
+        <div id="practice">
+            <p>some text</p>
+            <p>some more text</p>
+        </div>
+
+        <script>
+            var a = document.getElementById("practice");
+            var arr = a.childNodes;
+            for (var x=0; x<arr.length; x++){
+                arr[x].innerHTML = "updated text";
+            }
+        </script>
+
+    </body>
+</html>
