@@ -1,0 +1,11 @@
+<button id="test">Start</button>
+
+<script>
+  var btn = document.getElementById("test");
+  btn.addEventListener("click", myFunction);
+  
+  function myFunction(){
+    alert(Math.round(<Math.random()*12+1));
+    btn.removeEventListener("click", myFunction);
+  }
+</script>
