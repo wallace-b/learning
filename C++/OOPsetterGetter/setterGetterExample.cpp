@@ -6,6 +6,12 @@ class weapon{
     int damageAmount;
     
     public:
+    // constructor
+    weapon(int x){
+        setDamageAmount(x);
+        cout << "Weapon created with" << x << " quality." << "\n";
+    };
+    
     // setter
     void setDamageAmount(int arg){
         damageAmount = arg;
@@ -17,7 +23,7 @@ class weapon{
             cout << "This weapon is of excellent quality." << "\n";
         }
         return damageAmount;
-    }
+    };
 };
 
 int main(){
