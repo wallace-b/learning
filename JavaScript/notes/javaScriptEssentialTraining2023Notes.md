@@ -1,4 +1,4 @@
-# Section 1 – Fundamentals#
+# Section 1 – Fundamentals
 
 Without defer or async in the <header><script> declaration of the javascript(js) associated with a HTML, the browser encounters an error because the js script attempts to modify the HTML body section before it is rendered. The traditional way of addressing this is to simply move the script tag to the bottom of the html file. This introduces problems as there is a strong likelihood that some js should execute on document load initialization and while the document is loading.
 The 'async' keyword minimizes render blocking, when the js script is fully-loaded it executes and modifies the html doc. 
