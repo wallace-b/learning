@@ -29,10 +29,16 @@ Also, type=”module” is automatically-deferred thereby preventing render bloc
 ### Global objects
 
 If many people likely already want to do some basic operations with an object, chances are, there is already a standard built-in object for it.
-E.g. Data.prototype._many available methods_
+E.g. Date.prototype._many available methods_
 Refer https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects
 
 ### Methods
 
 If there are internal method calculations, use 'let' to declare variables that are limited to the scope of the method (i.e. a block statement, or expression on which it is used).
 Then, simply 'return' the result.
+
+### Classes
+
+Verbosely declaring each object e.g. const object = {key:value, key:value, etc. pairs} and related methods is tedious, so Classes (although a recent addition to js) allow us to create objects passing only property values at initialization. This allows methods and other things, such as default property values, to be shared.
+Class naming convention should be with a capital letter first - e.g. Backpack, Clock, Bag, Smartphone and so on.
+The constructor property names are called 'parameters'. The constructor will then use values passed as parameter values to construct an object where these parameter values become the property values for the newly-created object. Class prototype methods are added after the constructor method as discrete named methods.
