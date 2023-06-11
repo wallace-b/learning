@@ -1,12 +1,5 @@
-<!DOCTYPE html>
+{% extends "layout.html" %} {% block body %} Welcome to the app, {{ name }}.
+<br />
+It is {{ date_now }}, wherever you are in the {{ world }}.{% endblock %}
 
-<html lang="en">
-  <head>
-    <meta name="viewport" content="initial-scale=1" , width="device-width" />
-    <title>greet</title>
-  </head>
-  <body>
-    Welcome to the app, {{ name }}. <br />
-    It is {{ date_now }}.
-  </body>
-</html>
+<!--uses JINJA code syntax in flask for templating-->

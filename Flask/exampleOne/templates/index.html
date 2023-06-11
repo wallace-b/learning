@@ -1,21 +1,15 @@
-<!DOCTYPE html>
+{% extends "layout.html" %} {% block body %} Hello world~^^!! <br />
+Please insert your name.
+<form action="/greet" method="post">
+  <input
+    autocomplete="off"
+    autofocus
+    name="name"
+    placeholder="Name"
+    type="text"
+  />
+  <input type="submit" />
+</form>
+{% endblock %}
 
-<html lang="en">
-  <head>
-    <meta name="viewport" content="initial-scale=1" , width="device-width" />
-    <title>hello</title>
-  </head>
-  <body>
-    Hello world~^^!!
-    <form action="/greet" method="get">
-      <input
-        autocomplete="off"
-        autofocus
-        name="name"
-        placeholder="Name"
-        type="text"
-      />
-      <input type="submit" />
-    </form>
-  </body>
-</html>
+<!--uses JINJA code syntax in flask for templating-->
