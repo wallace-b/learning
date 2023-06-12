@@ -1,0 +1,8 @@
+{% extends "layout.html" %} {% block body %} You are successfully registered!
+<br />
+{{ name }} is registered for {{ subject }}. <br />
+<form action="/" method="get">
+  <input type="submit" value="Return to front page" />
+</form>
+
+{% endblock %}

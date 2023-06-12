@@ -1,0 +1,20 @@
+{% extends "layout.html" %} {% block body %}
+<h1>Register for Classes</h1>
+<form action="/register" method="post">
+  <input
+    autocomplete="off"
+    autofocus
+    name="name"
+    placeholder="Name"
+    type="text"
+  />
+
+  <select name="subject">
+    <option disable selected>Subject</option>
+    <option>Computer Science</option>
+    <option>Korean</option>
+    <option>Philosophy</option>
+  </select>
+  <input type="submit" value="Register" />
+</form>
+{% endblock %}
