@@ -42,3 +42,55 @@ Then, simply 'return' the result.
 Verbosely declaring each object e.g. const object = {key:value, key:value, etc. pairs} and related methods is tedious, so Classes (although a recent addition to js) allow us to create objects passing only property values at initialization. This allows methods and other things, such as default property values, to be shared.
 Class naming convention should be with a capital letter first - e.g. Backpack, Clock, Bag, Smartphone and so on.
 The constructor property names are called 'parameters'. The constructor will then use values passed as parameter values to construct an object where these parameter values become the property values for the newly-created object. Class prototype methods are added after the constructor method as discrete named methods.
+
+# Section 5 - DOM (Document Object Model)
+
+## Accessing elements
+
+querySelector("main") uses tag, querySelector(".maincontent") uses class name only returns the first element that matches the criteria.
+querySelectorAll("main li") returns a node that contains all matches for the criteria. Returns a node list
+
+Ex:
+document.querySelector(".backpack\_\_age").innerHTML="5555 days olds"
+document.querySelectorAll("main li").forEach(item => item.style.backgroundColor="blue")
+
+getElementsByClassName, getElementById are older methods that are falling-off in-favor of querySelector - returns a HTML array
+
+### Class manipulation
+
+element.classList or querySelector/All().classList have methods to manipulate classes of the element:
+classList.add("new-class)
+classList.remove("new-class")
+classList.toggle("new-class")
+classList.replace("old-class", "new-class")
+
+In almost every case you want to use .classList for methods for manipulating classes,
+only use .className to output string information and work directly with it.
+element.className returns a string containing all classes appended to the element. element.classList returns a DOMTokenList with each class appended to the element.
+
+### Attributes
+
+document.querySelector("img").hasAttribute("src")
+document.querySelector("img").getAttribute("src")
+document.querySelector("img").setAttribute("src", "~new information~")
+document.querySelector("img").setAttribute("newAttribute", "~new information~") -> creates a new attribute if it does not currently exist
+document.querySelector("img").removeAttribute("newAttribute")
+
+naming convention <type of data>-<name of attribute>
+
+### Inline CSS manipulation
+
+document.querySelector(".site-title").style ---> Full CSS Style declaration list, review the options
+Ex: document.querySelector(".site-title").style.backgroundColor="blue"
+CSS methods/elements are always in camelCase.
+
+### Inserting elements or HTML `` inline content into elements or classes
+
+ParentNode.append()
+ParentNode.prepend()
+Node.appendChild() , also returns this element to you
+insertAdjacentElement() and more...
+
+### Element creation
+
+document.querySelector("main").createElement(...)
