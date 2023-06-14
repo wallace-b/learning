@@ -94,3 +94,84 @@ insertAdjacentElement() and more...
 ### Element creation
 
 document.querySelector("main").createElement(...)
+  
+# Section 6 - Data Types
+
+## Assignment
+
+If you don't use var, let, or const keywords before a variable assignment, a global var is created with the name and value assignment.
+
+var - globally scoped reassignable variable
+let - locally scoped
+
+Curiously, object properties within a constant object can be changed in js, but not in C++.
+
+## == equality (value) and === identical equality (type & value)
+
+a = b assigns the value of b to a. a == b tests for equality between a and b. a === b tests for identical equality between a and b.
+
+# Section 7 - Arrays
+
+Arrays in js can hold a mix of any data type, like a list in python.
+
+const myArray = [1, 2, 3, 4]
+myArray.forEach( (item, index) => {
+myArray[index] = ++item;
+});
+
+array.forEach() executes a provided callback function once for each item in the array. array.map() creates a new array with the results of executing a provided callback function once for each item in the original array.
+
+A callback function is a function passed into another function as an argument, which is then invoked inside the outer function to complete some kind of routine or action.
+
+const myFunction = (data = 5, color = "red") => {..... this function} default values are passed
+
+A function declaration defines a function with the specified parameters starting with the function keyword. A function expression expresses a function inside a variable by assigning the function to the variable.
+
+# Section 8 - Functions and Methods
+
+### Function declaration
+
+function decAdd(a=0, b=0){
+let sum = a + b;
+return sum;
+}
+Hoisted to the global scope, available everywhere (can call it before it is declared). Naming declaration is like an advanced variable i.e. you can override the name further down in your code.
+With callback functions, the inner function needs to be declared first.
+
+### Function expression
+
+const expAdd = function (a=0, b=0) {
+let sum = a + b;
+return sum;
+}
+Places itself inside a variable that calls an anonymous function. This pattern is preferred for js frameworks like React / best practice in a const. const (cannot be overwritten), locally-scoped/block-scoped. Not hoisted to the global scope.
+
+decAdd(1, 4) --> 3
+expAdd(1, 4) --> 5; expAdd() ...with no default values --> returns function.
+
+### Immediately Invoked Function Expression (IIFE)
+
+IIFE function runs immediately when the browser encounters it
+
+(function () {
+let a = 4;
+let b = 6;
+let sum = expAdd(a, b);
+console.log(`The sum of a and b is: ${c}`);
+})();
+
+### Arrow function breakdown
+
+Shortened version~!
+Not hoisted and must be declared before it is called as a function.
+You cannot use an arrow function to create methods in classes/objects.
+
+1 Remove the 'function' keyword and place an arrow =>
+(a, b) => {
+return a + b;
+}
+2 Remove the body brackets and return (it is implied)
+(a, b) => a + b;
+3 (Optional) Remove the argument/input/parameter brackets. Sometimes code standards will re-implement these.
+a, b => a + b;
+E.g const func = (a, b) => a + b;
