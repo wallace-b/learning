@@ -94,7 +94,7 @@ insertAdjacentElement() and more...
 ### Element creation
 
 document.querySelector("main").createElement(...)
-  
+
 # Section 6 - Data Types
 
 ## Assignment
@@ -114,10 +114,12 @@ a = b assigns the value of b to a. a == b tests for equality between a and b. a 
 
 Arrays in js can hold a mix of any data type, like a list in python.
 
+<script>
 const myArray = [1, 2, 3, 4]
 myArray.forEach( (item, index) => {
 myArray[index] = ++item;
 });
+</script>
 
 array.forEach() executes a provided callback function once for each item in the array. array.map() creates a new array with the results of executing a provided callback function once for each item in the original array.
 
@@ -127,9 +129,22 @@ const myFunction = (data = 5, color = "red") => {..... this function} default va
 
 A function declaration defines a function with the specified parameters starting with the function keyword. A function expression expresses a function inside a variable by assigning the function to the variable.
 
+<script>
+myArray.forEach(function (item) {
+  item = `<li>${item}</li>`;
+  console.log(item);
+});
+
+let logItems = myArray.find(function (item) {
+  if (item.length >= 5) {
+    return item;
+  }
+});
+</script>
+
 # Section 8 - Functions and Methods
 
-### Function declaration
+### 1. Function declaration
 
 function decAdd(a=0, b=0){
 let sum = a + b;
@@ -138,7 +153,7 @@ return sum;
 Hoisted to the global scope, available everywhere (can call it before it is declared). Naming declaration is like an advanced variable i.e. you can override the name further down in your code.
 With callback functions, the inner function needs to be declared first.
 
-### Function expression
+### 2. Function expression
 
 const expAdd = function (a=0, b=0) {
 let sum = a + b;
@@ -149,9 +164,9 @@ Places itself inside a variable that calls an anonymous function. This pattern i
 decAdd(1, 4) --> 3
 expAdd(1, 4) --> 5; expAdd() ...with no default values --> returns function.
 
-### Immediately Invoked Function Expression (IIFE)
+### 3. Immediately Invoked Function Expression (IIFE), Anonymous function (no-name)
 
-IIFE function runs immediately when the browser encounters it
+IIFE functions (anonymous functions) run immediately when the browser encounters it. They are self-invoking.
 
 (function () {
 let a = 4;
@@ -160,7 +175,7 @@ let sum = expAdd(a, b);
 console.log(`The sum of a and b is: ${c}`);
 })();
 
-### Arrow function breakdown
+### 4. Arrow function breakdown
 
 Shortened version~!
 Not hoisted and must be declared before it is called as a function.
