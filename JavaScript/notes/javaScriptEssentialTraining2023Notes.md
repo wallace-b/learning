@@ -190,3 +190,41 @@ return a + b;
 3 (Optional) Remove the argument/input/parameter brackets. Sometimes code standards will re-implement these.
 a, b => a + b;
 E.g const func = (a, b) => a + b;
+  
+### 5. This and Function declarations or Arrow functions
+
+Nesting anonymous IIFE functions in an object may result in unexpected behavior if the anonymous function is a function declaration i.e. hoisted to the global scope.
+It is a good idea to try converting a function within an object/class to an arrow function format to ensure it locally-scoped.
+
+For example:
+<script>
+window.speed = 50; // Define default speed for the window i.e. entire DOM
+const car = {
+  name: "Toyota Camry",
+  speed: 25,
+  newSpeed: function (speed) {
+    console.log("this.speed in the method:", this.speed);
+    this.speed = speed;
+    console.log("this.speed after update:", this.speed);
+    (function () {
+      console.log("this.speed in nested function:", this.speed);
+    })();
+    (() => {
+      console.log("this.speed in arrow function:", this.speed);
+    })();
+  },
+};
+console.log(car.newSpeed(35));
+// Output
+// 25
+// 35
+// 50 global scope func decl - hoisted
+// 35 local scope => func - not-hoisted
+</script>
+
+### 6. Callback function behavior
+Why not ignore using a callback function (passing the entire function as an argument to the outer function) and just call the function directly inside, rather than using a callback function?
+With more complex functions there may be multiple iterations/variations of the same function name, and a callback function specified as an argument for an outer function allows us to pass the specific/precise version of the function needed.
+Promises can be used for a similar purpose.
+setTimeout and eventListener are examples of commonly-used callback functions.
+
