@@ -228,3 +228,154 @@ With more complex functions there may be multiple iterations/variations of the s
 Promises can be used for a similar purpose.
 setTimeout and eventListener are examples of commonly-used callback functions.
 
+### 7. Conditional if
+
+if (checkCon) { ...args... }, will run args if there is any value that is not false, 0, null or undefined due to js weak-typing.
+To ensure this does not happen, consider if (checkCon === "True")
+
+#### 7.1 ternary operator
+
+if (checkCon === true) {
+console.log("open");
+} else {
+console.log("closed");
+}
+
+equivalently,
+
+console.log(checkCon ? "open" : "closed");
+
+### 8. Logical operators
+
+&& (and), || (or)
+
+### 9. For Loops
+
+<script>
+const stuff = ["pig", "toy", "pencil", "ruler", "vitamin", "medicine", "torch", "fork"];
+
+const article = document.querySelector("article");
+let stuffList = document.createElement("ul");
+
+/**
+ * for loop, using a counter and 0-indexing
+ * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for
+ */
+for (let i = 0; i < stuff.length; i++) {
+  let listItem = document.createElement("li");
+  listItem.innerHTML = stuff[i];
+  stuffList.append(listItem);
+}
+
+/**
+ * for...of loop and arrays
+ * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+ */
+for (const item of stuff) {
+  let listItem = document.createElement("li");
+  listItem.innerHTML = item;
+  stuffList.append(listItem);
+}
+
+/**
+ * foreach array method
+ * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/forEach
+ */
+stuff.forEach((item) => {
+  let listItem = document.createElement("li");
+  listItem.innerHTML = item;
+  stuffList.append(listItem);
+});
+
+/**
+ * for...in loop and objects
+ * @link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of
+ */
+for (const singleObject in nestedObjects) {
+  let listItem = document.createElement("li");
+  listItem.innerHTML = `Name: ${nestedObjects[singleObject].name}`;
+  stuffList.append(listItem);
+}
+
+article.append(stuffList);
+
+// popular standard to use 'forEach' for arrays, and 'for ... in' for objects
+</script>
+
+### 10. Map
+
+If you need to loop through an array -> use forEach( )
+If you need to loop through an old array and make a new array for later operations -> use map( )
+
+For example:
+
+<script>
+  // map() through the stuff array to make a new stuffItems array. Where each item is now inside an <li> element within the new array
+const stuffItems = stuff.map((item) => {
+  let listItem = document.createElement("li");
+  listItem.innerHTML = item;
+  return listItem;
+});
+
+// Append each element from the stuffItems array to the stuffList <ul>
+stuffItems.forEach((item) => {
+  stuffList.append(item);
+});
+
+// Append stuffList to the <article>
+article.append(stuffList);
+</script>
+
+# Section 9 - Events
+
+Refer MDN docs, there are a lot of events you can monitor. When they are triggered, you can get some result, trigger a function, toggle classes, and so on i.e. using a callback or anonymous function added to an Event Listener that is called when the 'event' is triggered/detected.
+
+<script>
+target.addEventListener(target, callback [,options]);
+/*window
+or any element in the dom*/
+// options: advanced functionality that is used rarely, but usually set to 'false' to ensure expected behavior.
+
+// Example
+<button class="toggle-hood">Open hood</button>
+
+const status = carArticle.querySelector(".car_hood span");
+
+button.addEventListener("click", (event) => {
+  status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open";
+  button.innerText === "Open hood" ? button.innerText = "Close hood" : button.innerText = "Open hood";
+}, false);
+
+// OR we can use this and a function declaration
+
+button.addEventListener("click", function(event) => {
+  status.innerText === "open" ? status.innerText = "closed" : status.innerText = "open";
+  this.innerText === "Open hood" ? this.innerText = "Close hood" : this.innerText = "Open hood";
+}, false);
+
+
+</script>
+
+Form submits attempt to refresh the entire page, and this could be unwanted behavior. Prevent this by adding event.preventDefault() to the triggered functions/calls of the event on form submit. Refer below.
+
+<script>
+array.forEach(item => {
+    console.log(item.querySelector("form").addEventListener("submit", (event)=> {
+      event.preventDefault();
+      console.log(item);
+    }, false));
+
+  });
+  </script>
+
+Arrow functions do not have their own this, so they refer to the closest defined this which is the window object.
+
+The event object is automatically passed as a parameter to the callback function. Simply name and use the parameter. Generic names are addEventListener(event, (event or e) => { ... triggers }, false).
+
+# 10. Debugging
+
+console.log is key.
+Add breakpoints in the debugger/console of a browser. This might also be possible in an IDE.
+Commenting out/in sections.
+
+
