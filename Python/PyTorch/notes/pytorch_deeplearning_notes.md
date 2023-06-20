@@ -57,3 +57,28 @@ Recommendation algorithms, translation, speech recognition, object detection/com
 
 translation, speech recognition - sequence to sequence
 computer vision, NLP - multiclass, classification/regression
+
+## 7. PyTorch at a glance
+
+Most popular research deep learning framework. Is currently (2022-23) the standard for academic research.
+Writes fast/optimized deep learning code in Python and able to run on GPUs or TPUs.
+Able to access many pre-built deep learning models (Torch HUb/torchvision.models)
+Whole stack: preprocess data (numerical encoding data), model data, deploy model in your application/cloud.
+Originally developed in-house by FB/Meta, it is now open-source and used by companies like Microsoft, Tesla (such as Autopilot autonomous driving), OpenAI, and even in agriculture (crop detection).
+Evolved from the torch framework. Back in 2017-18 Google's tensorflow and PyTorch were about 60/40 in terms of research contribution/usage, but now PyTorch is considerably squeezing out at about 15/85.
+So, most used in research at this current time.
+
+"With tools like Colab, Keras, TensorFlow and PyTorch, virtually anyone can solve in a day, with no initial investment, problems that would have required an engineering team working for a quarter and $20k in hardware in 2014.
+
+https://paperswithcode.com/sota <-- best resource for staying across the most up-to-date research
+
+https://github.com/ritchieng/the-incredible-pytorch <-- a good link
+
+### Hardware
+
+Nvidia GPU () + CUDA -or- Cloud TPUs (Tensor Processing Unit)
+CUDA is a parallel computing platform and application programming interface (API) that allows software to use certain types of graphics processing units for general purpose processing
+
+## 8. What is a Tensor
+
+Multi-dimensional array.
