@@ -1,3 +1,10 @@
+# PyTorch Deep Learning and Machine Learning Course by Daniel Bourke
+
+Course Content follows/based on:
+https://www.learnpytorch.io/
+
+Notes by Bradley Wallace
+
 # Chapter 0 - PyTorch Fundamentals
 
 ## 1. Basic Introduction
@@ -81,4 +88,28 @@ CUDA is a parallel computing platform and application programming interface (API
 
 ## 8. What is a Tensor
 
-Multi-dimensional array.
+A multi-dimensional array containing information that is mathematically/numerically encoded. For example, images, sound clips, natural text. This can include processed input and raw output from a model (in this case, a deep learning neural network model).
+https://www.youtube.com/watch?v=f5liqUk0ZTw - Explanation by Dan Fleisch.
+
+## 9. Course Outline
+
+1. PyTorch basics & fundaementals (dealing with tensors and tensor operations)
+2. Preprocessing data (getting data into tensors)
+3. Building and using pretrained deep learning models
+4. Fitting a model to the data (learning patterns)
+5. Making predictions with a model (using patterns)
+6. Evaluating model predictions
+7. Saving and loading models
+8. Using a trained model to make predictions on custom data
+
+### 9.1 PyTorch workflow example
+
+1. Get data ready (convert into tensors)
+2. Build or pick a pretrained model (to suit the chosen problem)
+   2.1 Pick a loss functions (e.g. ReLU for sparsity/speed) & optimizer
+   2.2 Build a training loop, repeat
+3. Fit the model to the data (labels?) to make a prediction
+4. Evaluate the model (perhaps data splitting and augmentation is required in step #1?)
+5. Improve through experimentation (tweak model parameters)
+6. Save and reload your trained model (i.e. re-run the trained model in a fresh instance - I hope it remembers the weights and biases!)
+
