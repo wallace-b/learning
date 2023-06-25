@@ -13,7 +13,7 @@ Videos on Youtube, Code on Vizhub
 5. Use React hooks to create interactivity on visualizations.
 6. Create advanced interactivity, such as hovering tooltips or using a slider on a map.
 
-# 1. What is Data Visualization
+# 1. What is Data Visualization?
 
 Using some material from Visualization Analysis & Design - Tamara Munzer, University of British Columbia
 
