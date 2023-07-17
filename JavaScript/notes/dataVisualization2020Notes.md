@@ -38,3 +38,34 @@ Possibilities for use of visualization:
 - Help end users of automatic solutions / management-exec team verify, build trust.
 
 Replace cognition with perception, i.e. use the paper, computer display and visualizations to enhance human cognition.
+
+# 2. Advantages of React over vanilla JavaScript
+
+React does a much better job of allowing you to define components, and it also offers State management.
+But for something simple and basic, use native JavaScript. You don't need any frameworks or libraries. A good design principle is to do thigns in the simplest way possible, with the fewest dependencies first. If that becomes too difficult and there is economy/efficiency avaiable, then utilize D3 or React, or other frameworks.
+
+# What about Python or Tableau or Power BI?
+
+These methods are limited in terms of the interactions and how much you can customize your visualizations. Using D3 and React offers unlimited customization of visualizations and the ability to add interactivity.
+
+# 3. Data Visualization Reference Materials
+
+With code (best):
+-Blockbuilder Search
+-Observable
+
+Crowd sourced:
+-#dataviz on Twitter
+-Reddit: r/dataisbeautiful
+
+News article-like:
+-Reuters Graphics
+-The Upshot - The New York Times
+-The Pudding
+-FiveThirtyEight Data Visualization
+-FLOWINGDATA
+-Kantar Information is Beautiful Awards
+-Quartz Data Visualization
+
+White paper-like:
+-Graphic Detail - The Economist
