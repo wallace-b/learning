@@ -1,6 +1,5 @@
 /* New code improvements / refactoring: 
--refactor background yellow circle element outside of React App func exp with an external arrow function exp specified in ES6
--fixed missing semi-colons in code
+-relocate background circle, eyes and mouth elements (which has a d3.arc) outside of App.js as external js ES6 components
 */
 import './App.css';
 import { BackgroundCircle } from './BackgroundCircle.js';
