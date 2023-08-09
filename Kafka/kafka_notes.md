@@ -1,4 +1,4 @@
-### Apache Kafka
+## Apache Kafka
 
 # Introduction
 
@@ -11,7 +11,7 @@ Further, it maintains the order of occurence.
 It is also fault tolerant due to the replication and its distributed nature.
 So all these qualities leads it to being a very powerful platform.
 
-# Example 1
+# Example #1
 
 1. Imagine we design a system that listens to various basketball updates from various systems. Information could include: scoring, participants, and timing information. It then displays the game's status on various channels, such as mobile devices and browsers.
 2. In our architecture, we have a process that reads these updates and writes them in a Queue - we call this process, a Producer b/c it's producing these updates onto the Queue.
@@ -33,6 +33,7 @@ This strategy is the basic fundamental difference of Kafka with other messaging 
 - The field used to decide which 'Partition' the 'Record' should be stored in is called a 'Partition Key'. In our example 'Partition Key' = Match Name. It's up the Application to decide which field to use as the 'Partition Key'. If no 'Key' is specified, Kafka simply assigns the 'Record' to a random 'Partition'.
 - A grouping of 'Partitions' handling the same type of data is called a 'Topic'.
 - In order to identify each record uniquely, Kafka provides a sequential number to each record, called an 'Offset' (0-indexing, 0 is earliest, first out 'Record').
+- Modern day cloud application users expect a real-time experience, and Kafka is the back-bone of this.
 
 # Scaling for Distribution
 
@@ -54,3 +55,27 @@ For example:
 # Fault Tolerant & Durable Storage
 
 In Kafka, each Record is stored on persistent storage, so that if a Broker goes down, it can recover when it comes back up. Additionally, Kafka replicates Partitions so that when a Partition goes down a back up Partition takes over and processing can resume. This replication is configured using a Replication Factor. For example, a Replication Factor = 3 means 3 copies - 1 Leader and 2 Back Ups (meaning we can tolerate 2 Partition going down).
+
+# Example #2
+
+1. Imagine a hard integrated network for a eCommerce business, where checkout (upstream) is hard-integrated with email, shipment and inventory services/team.
+
+# Decoupling System Dependencies
+
+With Kafka, all the hard-integrations disappear and the checkout broadcasts the purchase events and doesn't care who is listening to those events. Then the other services, email, shipment and inventory subscribe to that stream (choose to listen) and they get the information they need to act accordingly.
+
+# Example #3
+
+1. Ridesharing / other transportation apps - Location tracking of service / vehicle / customer is broadcast every second.
+
+# Example #4
+
+1. Data gathering, optimizing your website based on analytics / traffic metrics. A more complex use case could be music/video suggestion in real-time using all the songs/videos a users has listened to/watched as a stream of data. It could also aggregrate the songs listened to by all application users and aggregate those to suggest an Artist's top (most popular) songs.
+
+# APIs
+
+1. Producer API - creates Records and produces them to Topic (ordered list of events)
+2. Consumer API - subscribes to one of more Topic(s) and ingests that data. It can subscribe to Topics in real-time or consume old data Records persisting/saved to that Topic
+   Producers can produce directly to Consumers (as per Example #1 Basketball Match updates) and that works for a simple Kafka application where the data does not change, but to transform that data, we need the Streams API
+3. Streams API - very powerful, leverages the Producer and Consumer APIs. It will consume from a Topic or Topics, it will analyze, aggregate or transform the data in real-time. Then prdouce the resulting Streams to the same Topic or new Topics. This is what is at the core of what makes Kafka so amazing and powers the more complex use cases such Location Tracking (Ex #3) or Data Gathering (Ex# 4).
+4. Connector API - allows developers to write connectors which are reusable Producers and Consumers. In a Kafka cluster, many developers might need to integrate the same data source, such as a MongoDB. Not every single developer should have to write that integration. The Connector API allows that integration to be written once, and all another developer needs to do is to configure it in order to get data into their cluster.
